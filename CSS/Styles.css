@@ -1,1 +1,8 @@
+:root {
+  --lBlue: #41B6E6;
+  --lGrey: #E8EDEE;
+}
 
+body {
+  background-color: var(--lGrey);
+}
