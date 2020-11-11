@@ -1,0 +1,1 @@
+Coronavirus, optimized HI-RES (COVID-19) by damy2000 on Thingiverse: https://www.thingiverse.com/thing:4212519
