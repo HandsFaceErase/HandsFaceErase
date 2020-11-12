@@ -6,3 +6,8 @@
 body {
   background-color: var(--lGrey);
 }
+
+img {
+  width:20%;
+  height:20%;
+}
