@@ -13,8 +13,9 @@ body {
 
 img {
   width:100%;
-  margin-top: -20%;
-  margin-bottom:-20%;
+  height: auto;;
+  /* margin-top: clamp(-20%, -20%, -20%); */
+  /* margin-bottom:clamp(-20%, -20%, -20%); */
 }
 
 .fullHeight {
@@ -25,4 +26,5 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: inherit;
 }
