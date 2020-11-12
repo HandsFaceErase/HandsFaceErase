@@ -3,11 +3,26 @@
   --lGrey: #E8EDEE;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: var(--lGrey);
 }
 
 img {
-  width:30%;
-  height:30%;
+  width:100%;
+  margin-top: -20%;
+  margin-bottom:-20%;
+}
+
+.fullHeight {
+  height:100%;
+}
+
+.logoContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
