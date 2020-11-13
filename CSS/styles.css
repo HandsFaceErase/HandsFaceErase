@@ -27,8 +27,3 @@ img {
   justify-content: center;
   align-items: center;
 }
-
-.navbar li a, .navbar .navbar-toggler {
-  color: #41B6E6;
-  line-height: 3;
-}
