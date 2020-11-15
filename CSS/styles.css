@@ -27,3 +27,28 @@ img {
   justify-content: center;
   align-items: center;
 }
+
+h1{
+  text-align: center;
+  color: #41B6E6;
+  padding: 10px;
+}
+
+h2, h3, h6, h5{
+text-align: center;
+color: #0072CE;
+}
+
+h4{
+  color: #0072CE;
+  padding: 10px;
+}
+
+p{
+  text-align: center;
+  padding: 20px;
+}
+
+li{
+  padding: 10px;
+}
