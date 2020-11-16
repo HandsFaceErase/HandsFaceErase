@@ -84,8 +84,55 @@ li{
 }
 
 #overlayImage{
-  padding-top: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%);
+}
+
+.stopwatch {
+  display: grid;
+  justify-items: right;
+  grid-row-gap: 23px;
+  width: 100%;
+  padding-top: 25px;
+}
+
+.time {
+  font-family: monospace;
+  font-weight: 300;
+  font-size: 48px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 187px;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+  outline: none;
+}
+
+.buttonPlay{
+  transform: translate(600%,700%);
+}
+
+.buttonReset{
+  transform: translate(700%,700%);
+}
+
+#playButton {
+  display: block;
+}
+
+#pauseButton {
+  display: none;
 }

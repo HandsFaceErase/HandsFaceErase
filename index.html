@@ -12,6 +12,7 @@
 
 </head>
 
+<!-- this calls for the Nav bar to appear, it also has a setting so certain windows will make a burger menu appear -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -36,9 +37,27 @@
 
 <body>
 
+<!--Allows the information tab to overlay over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
   <div id="overlay" onclick="off()">
   <div id="overlayImage">
-      <img src="Assets/Information.png" class="img-fluid">
+      <img src="Assets/information.png" class="img-fluid">
+  </div>
+</div>
+
+<div class="stopwatch">
+  <span class="time" id="display">00:00:00</span>
+  </div>
+
+<!-- This calls on the stopwatch and adds the countdown when buttons are pushed (start of timer system) -->
+  <div class="controls">
+    <button class="buttonPlay">
+      <img id="playButton" src="Assets/Play.png" />
+      <img id="pauseButton" src="Assets/Pause.png" />
+    </button>
+
+    <button class="buttonReset">
+      <img id="resetButton" src="Assets/Stop.png" />
+    </button>
   </div>
 </div>
 
