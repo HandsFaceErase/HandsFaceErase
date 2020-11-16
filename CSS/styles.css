@@ -13,7 +13,6 @@ body {
 
 img {
   width:100%;
-  height: auto;
   /* margin-top: clamp(-20%, -20%, -20%); */
   /* margin-bottom:clamp(-20%, -20%, -20%); */
 }
@@ -84,63 +83,9 @@ li{
   cursor: pointer;
 }
 
-#textHeader{
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  font-size: 40px;
-  color: #003087;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-
-#text{
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  font-size: 20px;
-  color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-
-#text1{
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  font-size: 20px;
-  text-align: center;
-  color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-
-#textHeader1{
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  font-size: 40px;
-  color: #003087;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-
-#text2{
-  position: absolute;
-  top: 67%;
-  left: 50%;
-  font-size: 20px;
-  color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
-
-#text3{
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  font-size: 20px;
-  color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+#overlayImage{
+  padding-top: 80px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
