@@ -83,4 +83,4 @@ let resetButton = document.getElementById("resetButton");
 
 playButton.addEventListener("click", start);
 pauseButton.addEventListener("click", pause);
-resetButton.addEventListener("click", reset);
+//resetButton.addEventListener("click", reset);
