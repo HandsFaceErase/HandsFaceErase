@@ -92,20 +92,6 @@ li{
  -ms-transform: translate(-50%,-50%);
 }
 
-.stopwatch {
-  display: grid;
-  justify-items: Right;
-  grid-row-gap: 23px;
-  width: 100%;
-  padding-top: 25px;
-}
-
-.time {
-  font-family:monospace;
-  font-weight: 300;
-  font-size: 48px;
-}
-
 .controls {
   display: grid;
   justify-items: Center;
@@ -122,8 +108,4 @@ button {
 
 #playButton {
   display: block;
-}
-
-#pauseButton {
-  display: none;
 }
