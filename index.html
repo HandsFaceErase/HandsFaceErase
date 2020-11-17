@@ -1,70 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <title>Hands Face Erase</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <head>
+    <!-- Metadata for site -->
+      <title>Hands Face Erase</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="author" content="SitePoint">
+      <meta name="description" content="The HTML5 Herald">
 
-<link rel="stylesheet" href="CSS/styles.css">
+    <!-- Stylesheets & Scripts -->
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!-- Main stylesheet -->
+      <link rel="stylesheet" href="CSS/styles.css">
+  </head>
 
-</head>
+  <body class="container fullHeight logoContainer p-0 mh-100 mw-100 px-5">
 
-<!-- this calls for the Nav bar to appear, it also has a setting so certain windows will make a burger menu appear -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html"><div class="logo-image">
-            <img src="Assets/logo.png" class="img-fluid">
-      </div></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li onclick="on()"><a>Information</a></li>
-        <li><a href="leaderboard.html">Leader Board</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <!-- this calls for the Nav bar to appear, it also has a setting so certain windows will make a burger menu appear -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><div class="logo-image">
+                <img src="Assets/logo.png" class="img-fluid">
+          </div></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li onclick="on()"><a>Information</a></li>
+            <li><a href="leaderboard.html">Leader Board</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<body>
-  <div class="container fullHeight logoContainer p-0 mh-100 mw-100 px-5">
 
-<!--Allows the information tab to overlay over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
-  <div id="overlay" onclick="off()">
-  <div id="overlayImage">
-      <img src="Assets/information.png" class="img-fluid">
-  </div>
-</div>
-
-    <div class="row p-0 justify-content-center logoContainer mh-100 px-5">
-      <div id="HandsLogo" class="col-md-4 p-0 my-n5" style="display: none" >
+    <div class="row justify-content-center logoContainer mh-100 px-5">
+      <div id="HandsLogo" class="col-3 p-0 my-n5" style="display: none" >
         <img src="Assets\Branding\HANDS.webp" alt="Hands">
       </div>
-      <div id="FaceLogo" class="col-md-4 p-0 mx-n5 my-n5" style="display: none" >
+      <div id="FaceLogo" class="col-3 p-0 mx-n5 my-n5" style="display: none" >
         <img src="Assets\Branding\FACE.webp" alt="Face">
       </div>
-      <div id="EraseLogo" class="col-md-4 p-0 my-n5" style="display: none" >
+      <div id="EraseLogo" class="col-3 p-0 my-n5" style="display: none" >
         <img src="Assets\Branding\ERASE.webp" alt="Erase">
       </div>
     </div>
-
-  <!-- This calls on the stopwatch and adds the countdown when buttons are pushed (start of timer system) -->
-    <div class="controls">
-      <button class="buttonPlay">
-        <img id="playButton" src="Assets/Play.png" />
-      </button>
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary">Play the game</button>
+      </div>
     </div>
 
-  <script src="JS/sketch.js"></script>
-</div>
-</body>
+    <!-- Scripts to load after html -->
+      <script src="JS/sketch.js"></script>
+  </body>
 </html>
