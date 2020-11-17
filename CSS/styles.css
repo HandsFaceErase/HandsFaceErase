@@ -52,13 +52,14 @@ li{
   padding: 10px;
 }
 
-.navbar-inverse, .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
+.navbar {
   background-color: #0072CE;
   color: #fff;
+  
 }
 
-.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
-  color:#768692;
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
 }
 
 .logo-image{
