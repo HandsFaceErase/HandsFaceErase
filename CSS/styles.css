@@ -33,23 +33,29 @@ h1{
   padding: 10px;
 }
 
-h2, h3, h6, h5{
+h2, h3, h6{
 text-align: center;
 color: #0072CE;
 }
 
 h4{
+  text-align: center;
   color: #0072CE;
-  padding: 10px;
+}
+
+h5{
+  text-align: left;
+  color: #0072CE;
 }
 
 p{
+  color: black;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 li{
-  padding: 10px;
+  color: black;
 }
 
 .navbar {
