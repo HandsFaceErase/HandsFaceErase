@@ -92,10 +92,6 @@ li{
  -ms-transform: translate(-50%,-50%);
 }
 
-.controls {
-  display: grid;
-  justify-items: Center;
-}
 
 button {
   cursor: pointer;
@@ -104,8 +100,4 @@ button {
   border: none;
   margin: 0;
   outline: none;
-}
-
-#playButton {
-  display: block;
 }

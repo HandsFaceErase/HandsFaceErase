@@ -11,14 +11,3 @@ function on() {
 function off() {
   document.getElementById("overlay").style.display = "none";
 }
-
-// Create function to display buttons
-
-function showButton(buttonKey) {
-  buttonToShow.style.display = "block";
-}
-// Create event listeners
-
-let playButton = document.getElementById("playButton");
-
-playButton.addEventListener("click", start);
