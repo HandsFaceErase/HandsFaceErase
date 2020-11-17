@@ -13,7 +13,6 @@ body {
 
 img {
   width:100%;
-  height: auto;
   /* margin-top: clamp(-20%, -20%, -20%); */
   /* margin-bottom:clamp(-20%, -20%, -20%); */
 }
@@ -26,4 +25,105 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h1{
+  text-align: center;
+  color: #41B6E6;
+  padding: 10px;
+}
+
+h2, h3, h6, h5{
+text-align: center;
+color: #0072CE;
+}
+
+h4{
+  color: #0072CE;
+  padding: 10px;
+}
+
+p{
+  text-align: center;
+  padding: 20px;
+}
+
+li{
+  padding: 10px;
+}
+
+.navbar-inverse, .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a{
+  background-color: #0072CE;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+  color:#768692;
+}
+
+.logo-image{
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   overflow: hidden;
+   margin-top: -35px;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#overlayImage{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%);
+}
+
+.stopwatch {
+  display: grid;
+  justify-items: Right;
+  grid-row-gap: 23px;
+  width: 100%;
+  padding-top: 25px;
+}
+
+.time {
+  font-family:monospace;
+  font-weight: 300;
+  font-size: 48px;
+}
+
+.controls {
+  display: grid;
+  justify-items: Center;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin: 0;
+  outline: none;
+}
+
+#playButton {
+  display: block;
+}
+
+#pauseButton {
+  display: none;
 }
