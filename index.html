@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <!-- Metadata -->
   <title>Hands Face Erase</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Stylesheets & Scripts -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<link rel="stylesheet" href="CSS/styles.css">
-
+  <link rel="stylesheet" href="CSS/styles.css">
 </head>
 
-<!-- this calls for the Nav bar to appear, it also has a setting so certain windows will make a burger menu appear -->
+<!-- Nav Bar -  Burger menu of smaller displays -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -37,32 +39,34 @@
 
 <body class="container fullHeight logoContainer p-0 mh-100 mw-100 px-5">
 
-<!--Allows the information tab to overlay over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
+  <!--Information Content - Overlayed over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
   <div id="overlay" onclick="off()">
-  <div id="overlayImage">
-      <img src="Assets/information.png" class="img-fluid">
+    <div id="overlayImage">
+        <img src="Assets/information.png" class="img-fluid">
+    </div>
   </div>
-</div>
 
-    <div class="row p-0 justify-content-center logoContainer mh-100 px-5">
-      <div id="HandsLogo" class="col-md-4 p-0 my-n5" style="display: none" >
-        <img src="Assets\Branding\HANDS.webp" alt="Hands">
-      </div>
-      <div id="FaceLogo" class="col-md-4 p-0 mx-n5 my-n5" style="display: none" >
-        <img src="Assets\Branding\FACE.webp" alt="Face">
-      </div>
-      <div id="EraseLogo" class="col-md-4 p-0 my-n5" style="display: none" >
-        <img src="Assets\Branding\ERASE.webp" alt="Erase">
-      </div>
+  <!-- Hands Face Space Logo -->
+  <div class="row p-0 justify-content-center logoContainer mh-100 px-5">
+    <div id="HandsLogo" class="col-md-4 p-0 my-n5" style="display: none" >
+      <img src="Assets\Branding\HANDS.webp" alt="Hands">
     </div>
+    <div id="FaceLogo" class="col-md-4 p-0 mx-n5 my-n5" style="display: none" >
+      <img src="Assets\Branding\FACE.webp" alt="Face">
+    </div>
+    <div id="EraseLogo" class="col-md-4 p-0 my-n5" style="display: none" >
+      <img src="Assets\Branding\ERASE.webp" alt="Erase">
+    </div>
+  </div>
 
- <div class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-primary">Play the game</button>
-      </div>
+  <!-- Play Button -->
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-primary">Play the game</button>
     </div>
+  </div>
 
   <script src="JS/sketch.js"></script>
-  
+
 </body>
 </html>
