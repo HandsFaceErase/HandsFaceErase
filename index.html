@@ -29,25 +29,50 @@
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item">
-          <a onclick="on()">Information</a>
+        <li id="information">
+          <a class="nav-link">Information</a>
+          <!--Information Content - Overlayed over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
+          <div class="modal fade" id="infoModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Modal with Dark Overlay</h4>
+              </div>
+              <div class="modal-body">
+                <p>This modal has a dark overlay.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="leaderboard.html">Leader Board</a>
+        <li id="leaderboard">
+          <a class="nav-link">Leader Board</a>
+          <!--Information Content - Overlayed over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
+          <div class="modal fade" id="leaderModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Modal with Dark Overlay</h4>
+              </div>
+              <div class="modal-body">
+                <p>This modal has a dark overlay.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
         </li>
       </ul>
     </div>
   </nav>
 
+
 <body>
-
-  <!--Information Content - Overlayed over the main page, this also calls on the image (image made as easier then setting out where each line would live) -->
-  <div id="overlay" onclick="off()">
-    <div id="overlayImage">
-        <img src="Assets/information.png" class="img-fluid">
-    </div>
-  </div>
-
   <!-- Hands Face Space Logo -->
   <div class="container-fluid">
     <div class="row">

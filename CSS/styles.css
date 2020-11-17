@@ -55,7 +55,8 @@ li{
 .navbar {
   background-color: #0072CE;
   color: #fff;
-  
+  padding: 0px;
+
 }
 
 .navbar-dark .navbar-nav .nav-link {

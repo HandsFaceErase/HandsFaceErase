@@ -4,10 +4,14 @@ $(document).ready( function() {
    $("#EraseLogo").delay(6000).fadeIn();
 });
 
-function on() {
-  document.getElementById("#overlay").style.display = "block";
-}
+$(document).ready(function(){
+  $("#information").click(function(){
+    $("#infoModal").modal({backdrop: true});
+  });
+});
 
-function off() {
-  document.getElementById("#overlay").style.display = "none";
-}
+$(document).ready(function(){
+  $("#leaderboard").click(function(){
+    $("#leaderModal").modal({backdrop: true});
+  });
+});
