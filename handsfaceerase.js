@@ -6,12 +6,12 @@ var normalRaycaster = new THREE.Raycaster(), raycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
 var initfly;
-var flies = 5;
-var fliesStart = 5;
-var activeFlies = 5;
-var fliesKilled = 0;
-var fireflies = new THREE.Group();
-var ARfireflies = new THREE.Group();
+var covid = 5;
+var covidStart = 5;
+var activeCovid = 5;
+var covidKilled = 0;
+var  covid19 = new THREE.Group();
+var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
@@ -170,34 +170,34 @@ function init(){
   // Combining firefly geometry and material into an object
   //initfly = new THREE.Mesh( flyGeometry, flyMaterial );
 
-  // Addding variable fireflies to normal scene ready for content to be added
-	normalScene.add( fireflies );
+  // Addding variable covid19 to normal scene ready for content to be added
+	normalScene.add( covid19 );
 
-  //Call function which creates and animates the initial flies in the scene
+  //Call function which creates and animates the initial covid in the scene
   fireflyStart();
 
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-//		Function to create initial fireflies (called in 'init')
+//		Function to create initial covid19 (called in 'init')
 //////////////////////////////////////////////////////////////////////////////////
 function fireflyStart(){
 
-  //For-Loop to create and inititalise the number of fireflies in global var 'flies'
-  for (var i=flies;i--;){
-    fireflies[i] = initfly.clone();
-    var Div = fireflies[i];
+  //For-Loop to create and inititalise the number of covid19 in global var 'covid'
+  for (var i=covid;i--;){
+    covid19[i] = initfly.clone();
+    var Div = covid19[i];
       // For each set random start location in scene
       Div.position.x = random(-10,10);
       Div.position.y = random(-10,10);
       Div.position.z = random(-10,10);
     // Call to function which adds motion
     Anim(Div);
-    // Adds fireflies to scene via the already added group 'fireflies'
-    fireflies.children.push(Div);
+    // Adds covid19 to scene via the already added group 'covid19'
+    covid19.children.push(Div);
   };
 
-  // Function to animated the flies created above to move using Tween.js
+  // Function to animated the covid created above to move using Tween.js
   function Anim(elm){
 
     // Set position and target variables
@@ -207,7 +207,7 @@ function fireflyStart(){
     // Perform tween which moves from current position to random position
     tween = new TWEEN.Tween(position).to(target, random(2000,6000)).start();
 
-    // On each tween frame the position of each flies is updated
+    // On each tween frame the position of each covid is updated
     tween.onUpdate(function() {
       elm.position.x = position.x;
       elm.position.y = position.y;
@@ -282,7 +282,7 @@ function ExplodeAnimation(x,y,z,inputScene){
 //////////////////////////////////////////////////////////////////////////////////
 function launchFirefly() {
 
-  flies = 1;
+  covid = 1;
   fireflyStart();
 
   var ARfly = initfly.clone();
@@ -297,7 +297,7 @@ function launchFirefly() {
   // Perform tween which moves from current position to random position
   tween = new TWEEN.Tween(position).to(target, 2000).start();
 
-  // On each tween frame the position of each flies is updated
+  // On each tween frame the position of each covid is updated
   tween.onUpdate(function() {
     ARfly.position.x = position.x;
     ARfly.position.y = position.y;
@@ -315,7 +315,7 @@ function launchFirefly() {
       // Perform tween which moves from current position to random position
       tween = new TWEEN.Tween(pos).to(targ, 2500).start();
 
-      // On each tween frame the position of each flies is updated
+      // On each tween frame the position of each covid is updated
       tween.onUpdate(function() {
         ARfly.position.x = position.x;
         ARfly.position.y = position.y;
@@ -356,7 +356,7 @@ var render = function () {
   normalScene.updateMatrixWorld();
   scene.updateMatrixWorld();
 
-  // Raycaster used for shooting fireflies
+  // Raycaster used for shooting covid19
   raycaster.setFromCamera( cameraPosition, camera );
   normalRaycaster.setFromCamera( cameraPosition, normalCamera);
 
@@ -379,9 +379,9 @@ var render = function () {
     // New explosion aninimation at coordinates of intersected object
     parts.push(new ExplodeAnimation(normalIntersects[0].object.position.x, normalIntersects[0].object.position.y,normalIntersects[0].object.position.z,normalScene));
 
-    activeFlies--;
+    activeCovid--;
 
-    fliesKilled++;
+    covidKilled++;
 
     // Set var fire back to false
     fire = false;
@@ -391,42 +391,42 @@ var render = function () {
     // Set var fire back to false
     fire = false;
 
-    activeFlies++
+    activeCovid++
 
     // Launch a new fly into the scene
     launchFirefly();
   }
 
-  // Update 'Level' number to reflect number of fireflies in scene / 5
-  var level = fliesStart/5;
+  // Update 'Level' number to reflect number of covid19 in scene / 5
+  var level = covidStart/5;
   document.getElementById("level").innerHTML = "Level: " + level;
 
-  // Update 'Fireflies Left' to reflect number of fireflies in scene
-  document.getElementById("fliesLeft").innerHTML = "Fireflies Left: " + activeFlies;
+  // Update 'covid19 Left' to reflect number of covid19 in scene
+  document.getElementById("covidLeft").innerHTML = "covid19 Left: " + activeCovid;
 
-  // Update 'Fireflies Killed' to reflect number of fireflies shot
-  document.getElementById("fliesKilled").innerHTML = "Fireflies Killed: " + fliesKilled;
+  // Update 'covid19 Killed' to reflect number of covid19 shot
+  document.getElementById("covidKilled").innerHTML = "covid19 Killed: " + covidKilled;
 
   // When reset button is pressed put scene back to init
   document.getElementById("reset").addEventListener("click", function(event){
 
-    for (var i = fireflies.children.length; i >= fliesStart; i--) {
-    fireflies.remove(fireflies.children[i]);
+    for (var i = covid19.children.length; i >= covidStart; i--) {
+    covid19.remove(covid19.children[i]);
     }
 
-    activeFlies=fliesStart;
+    activeCovid=covidStart;
 
-    fliesKilled = 0;
+    covidKilled = 0;
 
-    fireflies.children.visible = true;
+    covid19.children.visible = true;
 
     event.stopPropagation();
   });
 
-  // Display level up screen when no firelfies are left in scene
-  if (activeFlies == 0) {
-    flies = fliesStart + 5;
-    fliesStart = fliesStart + 5;
+  // Display level up screen when no covid 19 are left in scene
+  if (activeCovid == 0) {
+    covid = covidStart + 5;
+    covidStart = covidStart + 5;
 
     document.getElementById("levelUp").classList.add("opacity");
      setTimeout(removeOpacity, 4000);
@@ -434,7 +434,7 @@ var render = function () {
        document.getElementById("levelUp").classList.remove("opacity");
      };
     fireflyStart();
-    activeFlies = flies;
+    activeCovid = covid;
   }
 
 
