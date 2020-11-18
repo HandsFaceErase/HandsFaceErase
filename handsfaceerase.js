@@ -127,13 +127,13 @@ function init(){
 
   var jar;
   var jarGroup = new THREE.Object3D();
-  scene.add(jarGroup);
-    var materialLoader = new THREE.MTLLoader();
-    materialLoader.load('Assets/Jar.mtl', function (material) {
+  normalScene.add(jarGroup);
+  var materialLoader = new THREE.MTLLoader();
+  materialLoader.load('Assets/covid/covid19.mtl', function (material) {
       var objLoader = new THREE.OBJLoader()
       objLoader.setMaterials(material)
       objLoader.load(
-        'Assets/Jar.obj',
+        'Assets/covid/covid19.obj',
         function (jar) {
           jar.scale.set(0.7,0.7,0.7);
           jar.rotation.y = -1.7;
@@ -143,6 +143,9 @@ function init(){
         }
       )
     })
+    const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+
+    initfly=jarGroup;
 
 // Normal scene setup
 
@@ -165,7 +168,7 @@ function init(){
   );
 
   // Combining firefly geometry and material into an object
-  initfly = new THREE.Mesh( flyGeometry, flyMaterial );
+  //initfly = new THREE.Mesh( flyGeometry, flyMaterial );
 
   // Addding variable fireflies to normal scene ready for content to be added
 	normalScene.add( fireflies );
