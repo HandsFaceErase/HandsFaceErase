@@ -397,10 +397,6 @@ var render = function () {
     launchFirefly();
   }
 
-  // Update 'Level' number to reflect number of covid19 in scene / 5
-  var level = covidStart/5;
-  document.getElementById("level").innerHTML = "Level: " + level;
-
   // Update 'covid19 Left' to reflect number of covid19 in scene
   document.getElementById("covidLeft").innerHTML = "covid19 Left: " + activeCovid;
 
@@ -422,21 +418,6 @@ var render = function () {
 
     event.stopPropagation();
   });
-
-  // Display level up screen when no covid 19 are left in scene
-  if (activeCovid == 0) {
-    covid = covidStart + 5;
-    covidStart = covidStart + 5;
-
-    document.getElementById("levelUp").classList.add("opacity");
-     setTimeout(removeOpacity, 4000);
-     function removeOpacity(){
-       document.getElementById("levelUp").classList.remove("opacity");
-     };
-    fireflyStart();
-    activeCovid = covid;
-  }
-
 
   // Update controls for device orientation
   controls.update();
