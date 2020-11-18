@@ -17,6 +17,10 @@ img {
   /* margin-bottom:clamp(-20%, -20%, -20%); */
 }
 
+.hide {
+  display: none;
+}
+
 .fullHeight {
   height:100%;
 }
