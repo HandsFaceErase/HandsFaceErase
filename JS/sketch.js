@@ -16,3 +16,8 @@ $(document).ready(function(){
     $("#leaderModal").modal({backdrop: true});
   });
 });
+
+$("#btn").on("click", function() {
+  var audio = document.getElementById("audio");
+  audio.play();
+});
