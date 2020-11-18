@@ -122,7 +122,7 @@ function init(){
   normalScene.add( directionalLight );
 
   // Add weak ambient light
-  var ambientlight = new THREE.AmbientLight( 0x404040, 2);
+  var ambientlight = new THREE.AmbientLight( 0x404040, 0.5);
   normalScene.add( ambientlight );
 
   var jar;
@@ -135,15 +135,15 @@ function init(){
       objLoader.load(
         'Assets/covid/covid19.obj',
         function (jar) {
-          jar.scale.set(0.1,0.1,0.1);
+          jar.scale.set(10,10,10);
           jar.rotation.y = -1.7;
+          jar.rotation.x = -1.5
           jar.position.set(0,0,0);
           jar.shadow;
           jarGroup.add(jar);
         }
       )
     })
-    const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 
     initfly=jarGroup;
 
