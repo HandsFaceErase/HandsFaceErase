@@ -74,7 +74,7 @@ function init(){
     onResize()
   })
 
-  // Listen for Fire button to be pressed and sent global var 'fire' to true (used at render raycast)
+  // Listen for Fire button to be pressed and set global var 'fire' to true (used at render raycast)
   document.getElementById("fire").addEventListener("click", function(){
     fire = true;
     event.stopImmediatePropagation();
@@ -129,11 +129,11 @@ function init(){
   var jarGroup = new THREE.Object3D();
   scene.add(jarGroup);
     var materialLoader = new THREE.MTLLoader();
-    materialLoader.load('Resources/Jar.mtl', function (material) {
+    materialLoader.load('Assets/Jar.mtl', function (material) {
       var objLoader = new THREE.OBJLoader()
       objLoader.setMaterials(material)
       objLoader.load(
-        'Resources/Jar.obj',
+        'Assets/Jar.obj',
         function (jar) {
           jar.scale.set(0.7,0.7,0.7);
           jar.rotation.y = -1.7;
