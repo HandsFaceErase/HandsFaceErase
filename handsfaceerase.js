@@ -74,7 +74,7 @@ function init(){
     onResize()
   })
 
-  // Listen for Fire button to be pressed and set global var 'fire' to true (used at render raycast)
+  // Listen for Fire button to be pressed and sent global var 'fire' to true (used at render raycast)
   document.getElementById("fire").addEventListener("click", function(){
     fire = true;
     event.stopImmediatePropagation();
