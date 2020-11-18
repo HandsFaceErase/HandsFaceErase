@@ -17,14 +17,51 @@
 
 <body>
 
+
+
+  <div class="infoBarContainer">
+  <div class="infoBar">
+    <div class="flex"><p id="fliesKilled"></p></div>
+    <div class="flex"><p id="level"></p></div>
+    <div class="flex"><p id="fliesLeft"></p></div>
+  </div>
+  </div>
+
+  <div id="levelUp" class="levelUp">
+    <ul style="padding:0">
+    <p style="font-size:6rem"><b>LEVEL UP</b></p>
+    <p style="font-size:3rem">+5 Fireflies</p>
+  </ul>
+  </div>
+
   <div class="buttonContainer">
     <button class="fire" id="fire">Fire</button>
     <button class="reset" id="reset">Reset</button>
-    <button class="reseTTING" id="reset">Reset</button>
   </div>
 
+  <!-- ---------------- Custom Shader Code ------------------------ -->
+<script id="vertexShader" type="x-shader/x-vertex">
+varying vec3 vNormal;
+void main()
+{
+  vNormal = normalize( normalMatrix * normal );
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+}
+</script>
+
+<!-- fragment shader a.k.a. pixel shader -->
+<script id="fragmentShader" type="x-shader/x-vertex">
+varying vec3 vNormal;
+void main()
+{
+  float intensity = pow( 0.08 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 2.5 );
+  gl_FragColor = vec4(0.99, 0.97, 0.82,1.0) * intensity;
+}
+</script>
+<!-- ----------------------------------------------------------- -->
+
   <!-- Three.js library stored with file -->
-  <script src="JS/three.js"></script>
+  <script src="JS/three.min.js"></script>
 
   <!-- AR.js library -->
   <script src="JS/ar.js"></script>
@@ -45,10 +82,10 @@
   <script src="JS/DeviceOrientationControls.js"></script>
 
   <!-- TweenMax.min.js handles most of the motion performed in the App -->
-  <script src="JS/tween.js"></script>
+  <script src="JS/Tween.js"></script>
 
   <!-- HANDS FACE ERASE Game -->
-  <script src="JS/handsfaceerase.js"></script>
+  <script src="handsfaceerase.js"></script>
 
 </body>
 </html>
