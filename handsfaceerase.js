@@ -119,11 +119,11 @@ function init(){
   // Add a directional light
   var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
   directionalLight.position.set(1,0.5,1);
-  scene.add( directionalLight );
+  normalScene.add( directionalLight );
 
   // Add weak ambient light
-  var ambientlight = new THREE.AmbientLight( 0x404040, 3);
-  scene.add( ambientlight );
+  var ambientlight = new THREE.AmbientLight( 0x404040, 2);
+  normalScene.add( ambientlight );
 
   var jar;
   var jarGroup = new THREE.Object3D();
@@ -135,7 +135,7 @@ function init(){
       objLoader.load(
         'Assets/covid/covid19.obj',
         function (jar) {
-          jar.scale.set(0.7,0.7,0.7);
+          jar.scale.set(0.1,0.1,0.1);
           jar.rotation.y = -1.7;
           jar.position.set(0,0,0);
           jar.shadow;
