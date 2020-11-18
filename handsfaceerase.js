@@ -420,16 +420,6 @@ var render = function () {
     event.stopPropagation();
   });
 
-  // When splash screen button is pressed then fade out splashscreen
-  document.getElementById("splashButton").addEventListener("click", function(event){
-
-    document.getElementById("splashScreen").classList.add("splashBack");
-
-    window.scrollTo(0, 0);
-
-    event.stopPropagation();
-  });
-
   // Display level up screen when no firelfies are left in scene
   if (activeFlies == 0) {
     flies = fliesStart + 5;
