@@ -11,12 +11,6 @@ body {
   background-color: var(--lGrey);
 }
 
-img {
-  width:100%;
-  /* margin-top: clamp(-20%, -20%, -20%); */
-  /* margin-bottom:clamp(-20%, -20%, -20%); */
-}
-
 .hide {
   display: none;
 }
@@ -104,6 +98,9 @@ li{
  -ms-transform: translate(-50%,-50%);
 }
 
+#PlayNow{
+  padding-top: 100px;
+}
 
 button {
   cursor: pointer;
@@ -147,6 +144,11 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.container-fluid{
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .splashScreen{
