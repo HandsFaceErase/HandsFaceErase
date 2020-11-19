@@ -71,7 +71,7 @@ li{
 #HandsLogo, #FaceLogo, #EraseLogo {
   display: flex;
   max-width: auto;;
-  height: auto; 
+  height: auto;
   overflow: hidden;
   margin-top: -30%;
   margin-bottom: -30%;
@@ -142,17 +142,13 @@ li{
   height: inherit;
 } */
 
-/* img {
+img {
   display: block;
   max-width: 100%;
   height: auto;
   position: relative;
   overflow: hidden;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-} */
+}
 
 .container-fluid{
   height:95%;
