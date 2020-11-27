@@ -25,6 +25,11 @@ $(document).ready(function() {
     //     this.play();
     // }, false);
 
+  //   $('#pause').click(function() {
+  //     audioElement.pause();
+  //     $("#status").text("Status: Paused");
+  // });
+
     $('#boris').click(function() {
         audioElement.play();
         $("#status").text("Status: Playing");
