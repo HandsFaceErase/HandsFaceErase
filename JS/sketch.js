@@ -17,7 +17,16 @@ $(document).ready(function(){
   });
 });
 
-$("#btn").on("click", function() {
-  var audio = document.getElementById("audio");
-  audio.play();
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'Assets/Boris.mp3');
+
+    // audioElement.addEventListener('ended', function() {
+    //     this.play();
+    // }, false);
+
+    $('#boris').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
 });
