@@ -3,12 +3,27 @@
   --lGrey: #E8EDEE;
 }
 
-html, body {
+ html, body {
   height: 100%;
+  width: 100%;
+  overflow:hidden;
+}
+
+canvas{
+  position: fixed;
+  width: inherit;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 body {
-  background-color: var(--lGrey);
+  /* background-color: var(--lGrey); */
+  background-image: url('/Assets/High-Street-Blurred.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+
 }
 
 .hide {
@@ -59,8 +74,7 @@ li{
 .navbar {
   background-color:var(--lBlue);
   color: #fff;
-  padding: 0px;
-  height: 5%;
+  padding: 5px;
 
 }
 
@@ -75,6 +89,11 @@ li{
   overflow: hidden;
   margin-top: -30%;
   margin-bottom: -30%;
+}
+
+.lBlue {
+  background-color: var(--lBlue);
+  border: none;
 }
 
  img {
@@ -150,10 +169,27 @@ img {
   overflow: hidden;
 }
 
-.container-fluid{
+.container-index{
+  position: fixed;
   height:95%;
   max-height: 95%;
   overflow: hidden;
+  z-index: 3;
+}
+
+.container-play{
+  position: fixed;
+  height:100%;
+  max-height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.noMargin{
+
+  margin: 0px;
 }
 
 /* .splashScreen{
@@ -221,9 +257,9 @@ transition: all 0.4s ease 0s;
 }
 
 .infoBarContainer{
-  position:fixed;
+  /* position:fixed; */
   display: flex;
-  top:0
+  top:0;
   left:0;
   width: 100%;
   height: 10%;
@@ -257,7 +293,9 @@ transition: all 0.4s ease 0s;
 }
 
 .fire{
-  position: fixed;
+  /* position: flex; */
+  /* vertical-a?lign: bottom; */
+  align-items: center;
   bottom:0;
   font-size: 20px;
   z-index: 2;
@@ -281,12 +319,17 @@ transition: all 0.4s ease 0s;
 }
 
 .buttonContainer {
+  height: 89%;
+  width:100%;
+  position: fixed;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  z-index: 6;
 }
 
 .reset{
-  position: fixed;
+  /* position: fixed; */
   border-style:none;
   bottom:0;
   left: 0;
@@ -331,5 +374,5 @@ align-items: center;
   width: 100%;
   justify-content: center;
   align-items: center;
-  z-index: 0;
+  z-index: 5;
 }
