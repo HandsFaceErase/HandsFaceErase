@@ -25,6 +25,15 @@ cameraPosition.z = 0;
 function init(){
 // Initialise AR base scene and rendering preferences
 
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://kyralnboyle:<potty>@handsfaceerase.lyy9q.mongodb.net/<HandsFaceErase>?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
   // Set-up AR.js scene
   var video = arToolkitSource;
 
