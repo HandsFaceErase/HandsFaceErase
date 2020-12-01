@@ -15,6 +15,7 @@ var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
+var jars = [];
 cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
@@ -83,7 +84,7 @@ function init(){
     onResize()
   })
 
-  // Listen for Fire button to be pressed and sent global var 'fire' to true (used at render raycast)
+  // Listen for Fire button to be pressed and set global var 'fire' to true (used at render raycast)
   document.getElementById("fire").addEventListener("click", function(){
     fire = true;
     event.stopImmediatePropagation();
@@ -137,6 +138,7 @@ function init(){
   var jar;
   var jarGroup = new THREE.Object3D();
   normalScene.add(jarGroup);
+  console.log(normalScene);
   var materialLoader = new THREE.MTLLoader();
   materialLoader.load('Assets/covid/covid19.mtl', function (material) {
       var objLoader = new THREE.OBJLoader()
@@ -144,6 +146,7 @@ function init(){
       objLoader.load(
         'Assets/covid/covid19.obj',
         function (jar) {
+          jars.push(jar);
           jar.scale.set(10,10,10);
           jar.rotation.y = -1.7;
           jar.rotation.x = -1.5
@@ -152,7 +155,7 @@ function init(){
           jarGroup.add(jar);
         }
       )
-    })
+    });
 
     initfly=jarGroup;
 
@@ -162,7 +165,7 @@ function init(){
 	var light = new THREE.AmbientLight( 0x404040, 3);;
 	light.position.set(0,10,0);
 	normalScene.add(light);
-
+console.log(normalScene);
   //Create template for a firefly
   var flyGeometry = new THREE.SphereGeometry( 0.5, 14, 8 );
   var flyMaterial = new THREE.ShaderMaterial(
@@ -176,12 +179,9 @@ function init(){
     }
   );
 
-  // Combining firefly geometry and material into an object
-  //initfly = new THREE.Mesh( flyGeometry, flyMaterial );
-
   // Addding variable covid19 to normal scene ready for content to be added
 	normalScene.add( covid19 );
-
+console.log(normalScene);
   //Call function which creates and animates the initial covid in the scene
   fireflyStart();
 
@@ -228,7 +228,7 @@ function fireflyStart(){
       Anim(elm);
     })
 
-  };
+  }
 
 }
 
@@ -269,7 +269,7 @@ function ExplodeAnimation(x,y,z,inputScene){
   this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
 
   inputScene.add( this.object  );
-
+console.log(normalScene);
   // Update particles
   this.update = function(){
     if (this.status == true){
@@ -364,16 +364,19 @@ var render = function () {
   // Update matrix of both scenes
   normalScene.updateMatrixWorld();
   scene.updateMatrixWorld();
-
+// console.log(normalScene);
   // Raycaster used for shooting covid19
   raycaster.setFromCamera( cameraPosition, camera );
   normalRaycaster.setFromCamera( cameraPosition, normalCamera);
 
   // Set what raycaster can detect
   var intersects = raycaster.intersectObjects( scene.children );
-	var normalIntersects = normalRaycaster.intersectObjects( normalScene.children[2].children );
+  var normalIntersects = normalRaycaster.intersectObjects( jars );
 
-  // update pCounbt for TWEEN movement
+	// var normalIntersects = normalRaycaster.intersectObjects( normalScene.children[3].children );
+  //console.log(intersects, normalIntersects);
+// console.log(normalScene);
+  // update pCounnt for TWEEN movement
   var pCount = parts.length;
           while(pCount--) {
             parts[pCount].update();
@@ -384,6 +387,7 @@ var render = function () {
 
     // Set the fly to invisible
     normalIntersects[0].object.visible = false;
+    console.log(jars);
 
     // New explosion aninimation at coordinates of intersected object
     parts.push(new ExplodeAnimation(normalIntersects[0].object.position.x, normalIntersects[0].object.position.y,normalIntersects[0].object.position.z,normalScene));
@@ -396,7 +400,7 @@ var render = function () {
     fire = false;
 
   } else if (fire == true && normalIntersects[0] == undefined) {
-
+console.log(normalIntersects, jars);
     // Set var fire back to false
     fire = false;
 
