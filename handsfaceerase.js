@@ -16,6 +16,7 @@ var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
 var jars = [];
+var objects = [];
 cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
@@ -47,7 +48,7 @@ function init(){
   // Create a camera for each scene
   camera = new THREE.PerspectiveCamera();
   normalCamera = new THREE.PerspectiveCamera();
-  normalCamera.position.set(0,0,0);
+  normalCamera.position.set(0,0,150);
   scene.add(camera);
   normalScene.add(normalCamera);
 
@@ -135,102 +136,148 @@ function init(){
   var ambientlight = new THREE.AmbientLight( 0x404040, 0.5);
   normalScene.add( ambientlight );
 
-  var jar;
-  var jarGroup = new THREE.Object3D();
-  normalScene.add(jarGroup);
-  console.log(normalScene);
-  var materialLoader = new THREE.MTLLoader();
-  materialLoader.load('Assets/covid/covid19.mtl', function (material) {
-      var objLoader = new THREE.OBJLoader()
-      objLoader.setMaterials(material)
-      objLoader.load(
-        'Assets/covid/covid19.obj',
-        function (jar) {
-          jars.push(jar);
-          jar.scale.set(10,10,10);
-          jar.rotation.y = -1.7;
-          jar.rotation.x = -1.5
-          jar.position.set(0,0,0);
-          jar.shadow;
-          jarGroup.add(jar);
-        }
-      )
-    });
+  // var jar;
+  // var jarGroup = new THREE.Object3D();
+  // normalScene.add(jarGroup);
+  // console.log(normalScene);
+  // var materialLoader = new THREE.MTLLoader();
+  // materialLoader.load('Assets/covid/covid19.mtl', function (material) {
+  //     var objLoader = new THREE.OBJLoader()
+  //     objLoader.setMaterials(material)
+  //     objLoader.load(
+  //       'Assets/covid/covid19.obj',
+  //       function (jar) {
+  //         jars.push(jar);
+  //         jar.scale.set(10,10,10);
+  //         jar.rotation.y = -1.7;
+  //         jar.rotation.x = -1.5
+  //         jar.position.set(0,0,0);
+  //         jar.shadow;
+  //         jarGroup.add(jar);
+  //       }
+  //     )
+  //   });
 
-    initfly=jarGroup;
+
+  var manager = new THREE.LoadingManager();
+      textureLoader = new THREE.ImageLoader( manager );
+      modelLoader = new THREE.OBJLoader(manager);
+      modelLoader.load( 'Assets/covid/covid19.obj', function ( object ) {
+          object.traverse( function ( child ) {
+
+                  if ( child instanceof THREE.Mesh ) {
+                          console.log("instance");
+                          child.geometry.computeFaceNormals();
+                          child.material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: 0.5 } );
+
+                          child.material.side = THREE.DoubleSided;
+                  }
+
+          } );
+        objects.push(object);
+        object.position.x = 0;
+        object.position.y = 0;
+        object.position.z = 0;
+        object.scale.set(10,10,10);
+        normalScene.add(object);
+      });
+
+      var geometry = new THREE.SphereGeometry(150, 100, 100);
+            for ( var i = 0; i < 1; i ++ ) {
+
+                var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: 0.5 } ) );
+                object.position.x = Math.random() * 800 - 400;
+                object.position.y = Math.random() * 800 - 400;
+                object.position.z = Math.random() * 800 - 400;
+
+                object.scale.x = Math.random() * 2 + 1;
+                object.scale.y = Math.random() * 2 + 1;
+                object.scale.z = Math.random() * 2 + 1;
+
+                object.rotation.x = Math.random() * 2 * Math.PI;
+                object.rotation.y = Math.random() * 2 * Math.PI;
+                object.rotation.z = Math.random() * 2 * Math.PI;
+
+                scene.add( object );
+
+                objects.push( object );
+
+            }
+
+  //  initfly=jarGroup;
 
 // Normal scene setup
 
-  // Add ambient ligh to scene
-	var light = new THREE.AmbientLight( 0x404040, 3);;
-	light.position.set(0,10,0);
-	normalScene.add(light);
-console.log(normalScene);
-  //Create template for a firefly
-  var flyGeometry = new THREE.SphereGeometry( 0.5, 14, 8 );
-  var flyMaterial = new THREE.ShaderMaterial(
-    {
-      uniforms: { },
-      vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
-      fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
-      side: THREE.BackSide,
-      blending: THREE.AdditiveBlending,
-      transparent: true
-    }
-  );
-
-  // Addding variable covid19 to normal scene ready for content to be added
-	normalScene.add( covid19 );
-console.log(normalScene);
+//   // Add ambient ligh to scene
+// 	var light = new THREE.AmbientLight( 0x404040, 3);;
+// 	light.position.set(0,10,0);
+// 	normalScene.add(light);
+// console.log(normalScene);
+//   //Create template for a firefly
+//   var flyGeometry = new THREE.SphereGeometry( 0.5, 14, 8 );
+//   var flyMaterial = new THREE.ShaderMaterial(
+//     {
+//       uniforms: { },
+//       vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
+//       fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
+//       side: THREE.BackSide,
+//       blending: THREE.AdditiveBlending,
+//       transparent: true
+//     }
+//   );
+//
+//   // Addding variable covid19 to normal scene ready for content to be added
+// 	normalScene.add( covid19 );
+//   console.log(normalScene);
   //Call function which creates and animates the initial covid in the scene
-  fireflyStart();
+  // fireflyStart();
 
 }
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create initial covid19 (called in 'init')
 //////////////////////////////////////////////////////////////////////////////////
-function fireflyStart(){
-
-  //For-Loop to create and inititalise the number of covid19 in global var 'covid'
-  for (var i=covid;i--;){
-    covid19[i] = initfly.clone();
-    var Div = covid19[i];
-      // For each set random start location in scene
-      Div.position.x = random(-10,10);
-      Div.position.y = random(-10,10);
-      Div.position.z = random(-10,10);
-    // Call to function which adds motion
-    Anim(Div);
-    // Adds covid19 to scene via the already added group 'covid19'
-    covid19.children.push(Div);
-  };
-
-  // Function to animated the covid created above to move using Tween.js
-  function Anim(elm){
-
-    // Set position and target variables
-    var position = elm.position;
-    var target = {x:random(-10,10),y:random(-10,10),z:random(-10,10)};
-
-    // Perform tween which moves from current position to random position
-    tween = new TWEEN.Tween(position).to(target, random(2000,6000)).start();
-
-    // On each tween frame the position of each covid is updated
-    tween.onUpdate(function() {
-      elm.position.x = position.x;
-      elm.position.y = position.y;
-      elm.position.z = position.z;
-    });
-
-    // Once the tween has completed all this function again (created a loop)
-    tween.onComplete( function() {
-      Anim(elm);
-    })
-
-  }
-
-}
+// function fireflyStart(){
+//
+//   //For-Loop to create and inititalise the number of covid19 in global var 'covid'
+//   for (var i=covid;i--;){
+//     covid19[i] = initfly.clone();
+//     var Div = objects[i];
+//       // For each set random start location in scene
+//       Div.position.x = random(-10,10);
+//       Div.position.y = random(-10,10);
+//       Div.position.z = random(-10,10);
+//     // Call to function which adds motion
+//     Anim(Div);
+//     // Adds covid19 to scene via the already added group 'covid19'
+//     objects.children.push(Div);
+//   };
+//
+//   // Function to animated the covid created above to move using Tween.js
+//   function Anim(elm){
+//
+//     // Set position and target variables
+//     var position = elm.position;
+//     var target = {x:random(-10,10),y:random(-10,10),z:random(-10,10)};
+//
+//     // Perform tween which moves from current position to random position
+//     tween = new TWEEN.Tween(position).to(target, random(2000,6000)).start();
+//
+//     // On each tween frame the position of each covid is updated
+//     tween.onUpdate(function() {
+//       elm.position.x = position.x;
+//       elm.position.y = position.y;
+//       elm.position.z = position.z;
+//     });
+//
+//     // Once the tween has completed all this function again (created a loop)
+//     tween.onComplete( function() {
+//       Anim(elm);
+//     })
+//
+//   }
+//
+// }
 
 //Global variables for ExplodeAnimation
 var movementSpeed = 10;
@@ -289,55 +336,55 @@ console.log(normalScene);
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to launch fly from AR pot into scene
 //////////////////////////////////////////////////////////////////////////////////
-function launchFirefly() {
-
-  covid = 1;
-  fireflyStart();
-
-  var ARfly = initfly.clone();
-  ARfly.scale = 2;
-  ARfly.position.set(0,0,0);
-  scene.add(ARfly);
-
-  // Set position and target variables
-  var position = ARfly.position;
-  var target = {x:0,y:10,z:0};
-
-  // Perform tween which moves from current position to random position
-  tween = new TWEEN.Tween(position).to(target, 2000).start();
-
-  // On each tween frame the position of each covid is updated
-  tween.onUpdate(function() {
-    ARfly.position.x = position.x;
-    ARfly.position.y = position.y;
-    ARfly.position.z = position.z;
-  });
-
-
-  tween.onComplete(function() {
-    setTimeout(disappear, 2000);
-    function disappear(){
-      // Set position and target variables
-      var pos = ARfly.position;
-      var targ = {x:100,y:100,z:0};
-
-      // Perform tween which moves from current position to random position
-      tween = new TWEEN.Tween(pos).to(targ, 2500).start();
-
-      // On each tween frame the position of each covid is updated
-      tween.onUpdate(function() {
-        ARfly.position.x = position.x;
-        ARfly.position.y = position.y;
-        ARfly.position.z = position.z;
-      });
-
-      // On complete of launch fly remove it from scene
-      tween.onComplete(function() {
-        scene.remove(ARfly);
-      });
-    }
-  });
-}
+// function launchFirefly() {
+//
+//   covid = 1;
+//   fireflyStart();
+//
+//   var ARfly = initfly.clone();
+//   ARfly.scale = 2;
+//   ARfly.position.set(0,0,0);
+//   scene.add(ARfly);
+//
+//   // Set position and target variables
+//   var position = ARfly.position;
+//   var target = {x:0,y:10,z:0};
+//
+//   // Perform tween which moves from current position to random position
+//   tween = new TWEEN.Tween(position).to(target, 2000).start();
+//
+//   // On each tween frame the position of each covid is updated
+//   tween.onUpdate(function() {
+//     ARfly.position.x = position.x;
+//     ARfly.position.y = position.y;
+//     ARfly.position.z = position.z;
+//   });
+//
+//
+//   tween.onComplete(function() {
+//     setTimeout(disappear, 2000);
+//     function disappear(){
+//       // Set position and target variables
+//       var pos = ARfly.position;
+//       var targ = {x:100,y:100,z:0};
+//
+//       // Perform tween which moves from current position to random position
+//       tween = new TWEEN.Tween(pos).to(targ, 2500).start();
+//
+//       // On each tween frame the position of each covid is updated
+//       tween.onUpdate(function() {
+//         ARfly.position.x = position.x;
+//         ARfly.position.y = position.y;
+//         ARfly.position.z = position.z;
+//       });
+//
+//       // On complete of launch fly remove it from scene
+//       tween.onComplete(function() {
+//         scene.remove(ARfly);
+//       });
+//     }
+//   });
+// }
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create random number between two povided points
@@ -371,7 +418,7 @@ var render = function () {
 
   // Set what raycaster can detect
   var intersects = raycaster.intersectObjects( scene.children );
-  var normalIntersects = normalRaycaster.intersectObjects( jars );
+  var normalIntersects = normalRaycaster.intersectObjects( objects, true );
 
 	// var normalIntersects = normalRaycaster.intersectObjects( normalScene.children[3].children );
   //console.log(intersects, normalIntersects);
@@ -407,7 +454,7 @@ console.log(normalIntersects, jars);
     activeCovid++
 
     // Launch a new fly into the scene
-    launchFirefly();
+    // launchFirefly();
   }
 
   // Update 'covid19 Left' to reflect number of covid19 in scene
