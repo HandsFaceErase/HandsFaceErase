@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 // Adding Mongodb to the file
 const MongoClient = require('mongodb').MongoClient;
 const Express = require("express");
@@ -14,20 +12,13 @@ const server = Express();
 // const secret = $({secret.MongoDBKey});
 const uri = "mongodb+srv://kyralnboyle:<potty>@handsfaceerase.lyy9q.mongodb.net/<HandsFaceErase>?retryWrites=true&w=majority";
 //const client = new MongoClient(uri, { useNewUrlParser: true });
-=======
-const MongoClient = require('mongodb').MongoClient;
-
-const secret = $({secret.MongoDBKey});
-const uri = "mongodb+srv://kyralnboyle:<potty>@handsfaceerase.lyy9q.mongodb.net/<HandsFaceErase>?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
 client.connect(err => {
   const collection = client.db("HandsFaceErase").collection("leaderboard");
   // perform actions on the collection object
   client.close();
 });
 
-<<<<<<< HEAD
 //This is requesting all the diffrent fumctions
 // const { MongoClient, ObjectID } = require("mongodb");
 // const Express = require("express");
@@ -41,18 +32,8 @@ client.connect(err => {
 
 // server.use(BodyParser.json());
 server.use(body-parser/package.json());
-=======
-const { MongoClient, ObjectID } = require("mongodb");
-const Express = require("express");
-const Cors = require("cors");
-const BodyParser = require("body-parser");
-const { request } = require("express");
-
-const client = new MongoClient(process.env["ATLAS_URI"]);
-const server = Express();
-
 server.use(BodyParser.json());
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
+
 server.use(BodyParser.urlencoded({ extended: true }));
 server.use(Cors());
 
@@ -65,10 +46,8 @@ server.get("/getNearLocation", async (request, response) => {});
 server.listen("3000", async () => {
     try {
         await client.connect();
-<<<<<<< HEAD
+
         //tells the js to look for this database
-=======
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
         collection = client.db("HandsFaceErase").collection("leaderboard");
         collection.createIndex({ "location": "2dsphere" });
     } catch (e) {
@@ -76,10 +55,8 @@ server.listen("3000", async () => {
     }
 });
 
-<<<<<<< HEAD
+
 //Tells the programme to request the name, score and location
-=======
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
 server.post("/create", async (request, response) => {
     try {
         let result = await collection.insertOne(
@@ -95,10 +72,8 @@ server.post("/create", async (request, response) => {
     }
 });
 
-<<<<<<< HEAD
+
 //retreive all data but show it as three elements in decending order.
-=======
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
 server.get("/get", async (request, response) => {
     try {
         let result = await collection.find({}).sort({ score: -1 }).limit(3).toArray();
@@ -108,10 +83,8 @@ server.get("/get", async (request, response) => {
     }
 });
 
-<<<<<<< HEAD
+
 //gets the close location and adds it to a close leader board
-=======
->>>>>>> 9a58f4e86659feeb7baa82d20cc8cb7fe229b65c
 server.get("/getNearLocation", async (request, response) => {
     try {
         let result = await collection.find({

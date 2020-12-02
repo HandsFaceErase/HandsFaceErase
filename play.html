@@ -67,7 +67,6 @@ void main()
 
 <script>
 const GameConfig = {
-                type: HandsFaceErase.AUTO,
                 parent: "game",
                 dom: {
                     createContainer: true
@@ -80,8 +79,6 @@ const GameConfig = {
                 },
                 scene: []
             };
-
-            const game = new HandsFaceErase(GameConfig);
 
     // gets the location of the player from the browser
 
@@ -96,6 +93,16 @@ const GameConfig = {
     } else {
         console.error("Geolocation is not supported by this browser!");
     }
+
+    game.scene.start("information.js", {
+    location: {
+        type: "Point",
+        coordinates: [
+            parseFloat(position.coords.longitude.toFixed(1)),
+            parseFloat(position.coords.latitude.toFixed(1))
+        ]
+    }
+})
 
 </script>
 
