@@ -27,7 +27,7 @@
   <div class="infoBar">
     <!-- <div class="flex"><img src="Assets/mute2.png" onclick="document.getElementById('mute').pause()" /></div> -->
     <div class="flex" ><p id="covidKilled"></p></div>
-    <div class="flex" class="healthBarShell"><p class="healthBarValue"></p></div>
+    <div class="flex healthBarShell"><p class="healthBarValue"></p></div>
     <!-- <div class="flex"><audio controls autoplay loop><source src="Assets/Background.mp3"></audio></div> -->
     <div class="flex"><p id="covidLeft"></p></div>
   </div>
@@ -65,46 +65,6 @@ void main()
 }
 </script>
 
-<script>
-const GameConfig = {
-                parent: "game",
-                dom: {
-                    createContainer: true
-                },
-                physics: {
-                    default: "arcade",
-                    arcade: {
-                        debug: false
-                    }
-                },
-                scene: []
-            };
-
-    // gets the location of the player from the browser
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            if(!position.coords || !position.coords.longitude) {
-                position.coords.latitude = 0;
-                position.coords.longitude = 0;
-            }
-            const game = new HandsFaceErase(GameConfig);
-        });
-    } else {
-        console.error("Geolocation is not supported by this browser!");
-    }
-
-    game.scene.start("information.js", {
-    location: {
-        type: "Point",
-        coordinates: [
-            parseFloat(position.coords.longitude.toFixed(1)),
-            parseFloat(position.coords.latitude.toFixed(1))
-        ]
-    }
-})
-
-</script>
 
   <!-- Three.js library stored with file -->
   <script src="JS/three.min.js"></script>
@@ -135,8 +95,6 @@ const GameConfig = {
 
   <script src="JS/sketch.js"></script>
 
-<!-- Code for adding the leaderboard  -->
-  <script src="leaderboard.js"></script>
 
 </body>
 </html>
