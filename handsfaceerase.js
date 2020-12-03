@@ -5,17 +5,17 @@ var camera, normalCamera, scene, normalScene, controls, renderer, normalRenderer
 var normalRaycaster = new THREE.Raycaster(), raycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
-var initfly;
-var covid = 5;
-var covidStart = 5;
-var activeCovid = 5;
-var covidKilled = 0;
+//var initfly;
+var covid = 50;
+var covidStart = 50;
+var activeCovid = 50;
+//var healthBarValue = healthBarValue;
 var covid19 = new THREE.Group();
 var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
-var jars = [];
+var hold = [];
 var objects = [];
 cameraPosition.x = 0;
 cameraPosition.y = 0;
@@ -138,7 +138,7 @@ function init(){
   //     objLoader.load(
   //       'Assets/covid/covid19.obj',
   //       function (jar) {
-  //         jars.push(jar);
+  //         hold.push(jar);
   //         jar.scale.set(10,10,10);
   //         jar.rotation.y = -1.7;
   //         jar.rotation.x = -1.5
@@ -425,20 +425,20 @@ var render = function () {
 
     // Set the fly to invisible
     normalIntersects[0].object.visible = false;
-    console.log(jars);
+    console.log(hold);
 
     // New explosion aninimation at coordinates of intersected object
     parts.push(new ExplodeAnimation(normalIntersects[0].object.position.x, normalIntersects[0].object.position.y,normalIntersects[0].object.position.z,normalScene));
 
     activeCovid--;
 
-    covidKilled++;
+    //healthBarValue--;
 
     // Set var fire back to false
     fire = false;
 
   } else if (fire == true && normalIntersects[0] == undefined) {
-console.log(normalIntersects, jars);
+console.log(normalIntersects, hold);
     // Set var fire back to false
     fire = false;
 
@@ -451,8 +451,8 @@ console.log(normalIntersects, jars);
   // Update 'covid19 Left' to reflect number of covid19 in scene
   document.getElementById("covidLeft").innerHTML = "covid19 Left: " + activeCovid;
 
-  // Update 'covid19 Killed' to reflect number of covid19 shot
-  document.getElementById("covidKilled").innerHTML = "covid19 Killed: " + covidKilled;
+  // Update 'Health bar' to reflect number of covid19 shot
+  // document.getElementById("healthBarValue").innerHTML = "Health Bar: " + healthBarShell;
 
   // When reset button is pressed put scene back to init
   document.getElementById("reset").addEventListener("click", function(event){
@@ -463,7 +463,7 @@ console.log(normalIntersects, jars);
 
     activeCovid=covidStart;
 
-    covidKilled = 0;
+    // healthBarValue = healthBarValue;
 
     covid19.children.visible = true;
 

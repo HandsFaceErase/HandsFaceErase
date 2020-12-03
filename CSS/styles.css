@@ -58,12 +58,12 @@ h5,h6{
 p{
   color: black;
   text-align: center;
-  /* padding: 10px;
+  /* padding: 10px; */
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 1px;
   margin-bottom: 1px;
-  text-align: center; */
+  text-align: center;
 }
 
 li{
@@ -93,12 +93,6 @@ li{
 .lBlue {
   background-color: var(--lBlue);
   border: none;
-}
-
- img {
-  width:inherit ;
-  height: inherit;
-  overflow:hidden;
 }
 
 /* .logo-image{
@@ -166,6 +160,9 @@ img {
   height: auto;
   position: relative;
   overflow: hidden;
+  width:inherit ;
+  height: inherit;
+  overflow:hidden;
 }
 
 .container-index{
@@ -187,8 +184,7 @@ img {
 }
 
 .noMargin{
-
-  margin: 0px;
+ margin: 0px;
 }
 
 /* .splashScreen{
@@ -299,7 +295,7 @@ transition: all 0.4s ease 0s;
   font-size: 20px;
   z-index: 2;
   border-style:none;
-  margin: 10px 10px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   width: 75px;
