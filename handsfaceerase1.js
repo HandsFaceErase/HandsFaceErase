@@ -181,7 +181,7 @@ function fireflyStart(){
     // Call to function which adds motion
     Anim(Div);
     // Adds covid19 to scene via the already added group 'covid19'
-    covid19.children.push(Div);
+    covid19.children.push(covid19[i]);
   };
 
   // Function to animated the covid created above to move using Tween.js
@@ -189,10 +189,10 @@ function fireflyStart(){
 
     // Set position and target variables
     var position = elm.position;
-    var target = {x:random(-10,10),y:random(-10,10),z:random(-10,10)};
+    var target = {x:random(-7,7),y:random(-7,7),z:random(-7,7)};
 
     // Perform tween which moves from current position to random position
-    tween = new TWEEN.Tween(position).to(target, random(2000,6000)).start();
+    tween = new TWEEN.Tween(position).to(target, random(4000,8000)).start();
 
     // On each tween frame the position of each covid is updated
     tween.onUpdate(function() {
@@ -221,48 +221,48 @@ var parts = [];
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create explosion at x,y & of interesected object
 //////////////////////////////////////////////////////////////////////////////////
-function ExplodeAnimation(x,y,z,inputScene){
-  var geometry = new THREE.Geometry();
-
-  for (i = 0; i < totalObjects; i ++)
-  {
-    // Generate particlesto the number of totalObjects
-    var vertex = new THREE.Vector3();
-    vertex.x = x;
-    vertex.y = y;
-    vertex.z = z;
-
-    geometry.vertices.push( vertex );
-    dirs.push({x:(Math.random() * movementSpeed)-(movementSpeed/2),y:(Math.random() * movementSpeed)-(movementSpeed/2),z:(Math.random() * movementSpeed)-(movementSpeed/2)});
-  }
-  var material = new  THREE.PointsMaterial( { size: objectSize,  color: 0xffd24d});
-  var particles = new THREE.Points( geometry, material );
-
-  this.object = particles;
-  this.status = true;
-
-  // Create knew direction based on movementSpeed and Math.random
-  this.xDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-  this.yDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-  this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-
-  inputScene.add( this.object  );
-
-  // Update particles
-  this.update = function(){
-    if (this.status == true){
-      var pCount = totalObjects;
-      while(pCount--) {
-        var particle =  this.object.geometry.vertices[pCount]
-        particle.y += dirs[pCount].y;
-        particle.x += dirs[pCount].x;
-        particle.z += dirs[pCount].z;
-      }
-      this.object.geometry.verticesNeedUpdate = true;
-    }
-  }
-
-}
+// function ExplodeAnimation(x,y,z,inputScene){
+//   var geometry = new THREE.Geometry();
+//
+//   for (i = 0; i < totalObjects; i ++)
+//   {
+//     // Generate particlesto the number of totalObjects
+//     var vertex = new THREE.Vector3();
+//     vertex.x = x;
+//     vertex.y = y;
+//     vertex.z = z;
+//
+//     geometry.vertices.push( vertex );
+//     dirs.push({x:(Math.random() * movementSpeed)-(movementSpeed/2),y:(Math.random() * movementSpeed)-(movementSpeed/2),z:(Math.random() * movementSpeed)-(movementSpeed/2)});
+//   }
+//   var material = new  THREE.PointsMaterial( { size: objectSize,  color: 0xffd24d});
+//   var particles = new THREE.Points( geometry, material );
+//
+//   this.object = particles;
+//   this.status = true;
+//
+//   // Create knew direction based on movementSpeed and Math.random
+//   this.xDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+//   this.yDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+//   this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+//
+//   normalScene.add( particles  );
+//
+//   // Update particles
+//   this.update = function(){
+//     if (this.status == true){
+//       var pCount = totalObjects;
+//       while(pCount--) {
+//         var particle =  this.object.geometry.vertices[pCount]
+//         particle.y += dirs[pCount].y;
+//         particle.x += dirs[pCount].x;
+//         particle.z += dirs[pCount].z;
+//       }
+//       this.object.geometry.verticesNeedUpdate = true;
+//     }
+//   }
+//
+// }
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to launch fly from AR pot into scene
