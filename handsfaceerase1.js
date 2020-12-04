@@ -6,17 +6,15 @@ var normalRaycaster = new THREE.Raycaster(), raycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
 var initfly;
-var covid = 50;
-var covidStart = 50;
-var activeCovid = 50;
-//var healthBarValue = healthBarValue;
+var covid = 5;
+var covidStart = 5;
+var activeCovid = 5;
+var covidKilled = 0;
 var covid19 = new THREE.Group();
 var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
-var hold = [];
-var objects = [];
 cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
@@ -39,7 +37,7 @@ function init(){
   // Create a camera for each scene
   camera = new THREE.PerspectiveCamera();
   normalCamera = new THREE.PerspectiveCamera();
-  normalCamera.position.set(0,0,150);
+  normalCamera.position.set(0,0,0);
   scene.add(camera);
   normalScene.add(normalCamera);
 
@@ -76,7 +74,7 @@ function init(){
     onResize()
   })
 
-  // Listen for Fire button to be pressed and set global var 'fire' to true (used at render raycast)
+  // Listen for Fire button to be pressed and sent global var 'fire' to true (used at render raycast)
   document.getElementById("fire").addEventListener("click", function(){
     fire = true;
     event.stopImmediatePropagation();
@@ -130,7 +128,6 @@ function init(){
   var jar;
   var jarGroup = new THREE.Object3D();
   normalScene.add(jarGroup);
-  console.log(normalScene);
   var materialLoader = new THREE.MTLLoader();
   materialLoader.load('Assets/covid/covid19.mtl', function (material) {
       var objLoader = new THREE.OBJLoader()
@@ -138,63 +135,18 @@ function init(){
       objLoader.load(
         'Assets/covid/covid19.obj',
         function (jar) {
-          hold.push(jar);
           jar.scale.set(10,10,10);
-          jar.rotation.y = -1.7;
-          jar.rotation.x = -1.5
+          jar.rotation.y = -1.2;
+          jar.rotation.x = -1.0;
+          jar.rotation.z = 0;
           jar.position.set(0,0,0);
           jar.shadow;
           jarGroup.add(jar);
         }
       )
-    });
+    })
 
-  // var manager = new THREE.LoadingManager();
-  //     textureLoader = new THREE.ImageLoader( manager );
-  //     modelLoader = new THREE.OBJLoader(manager);
-  //     modelLoader.load( 'Assets/covid/covid19.obj', function ( object ) {
-  //         object.traverse( function ( child ) {
-  //
-  //                 if ( child instanceof THREE.Mesh ) {
-  //                         console.log("instance");
-  //                         child.geometry.computeFaceNormals();
-  //                         child.material = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: 0.5 } );
-  //
-  //                         child.material.side = THREE.DoubleSided;
-  //                 }
-  //
-  //         } );
-  //       objects.push(object);
-  //       object.position.x = 0;
-  //       object.position.y = 0;
-  //       object.position.z = 0;
-  //       object.scale.set(100,100,100);
-  //       normalScene.add(object);
-  //     });
-  //
-  //     var geometry = new THREE.SphereGeometry(15, 15, 15);
-  //           for ( var i = 0; i < 1; i ++ ) {
-  //
-  //               var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, opacity: 0.5 } ) );
-  //               object.position.x = Math.random() * 800 - 400;
-  //               object.position.y = Math.random() * 800 - 400;
-  //               object.position.z = Math.random() * 800 - 400;
-  //
-  //               object.scale.x = Math.random() * 2 + 1;
-  //               object.scale.y = Math.random() * 2 + 1;
-  //               object.scale.z = Math.random() * 2 + 1;
-  //
-  //               object.rotation.x = Math.random() * 2 * Math.PI;
-  //               object.rotation.y = Math.random() * 2 * Math.PI;
-  //               object.rotation.z = Math.random() * 2 * Math.PI;
-  //
-  //               normalScene.add( object );
-  //
-  //               objects.push( object );
-  //
-  //           }
-
-   initfly=jarGroup;
+    initfly=jarGroup;
 
 // Normal scene setup
 
@@ -202,24 +154,13 @@ function init(){
 	var light = new THREE.AmbientLight( 0x404040, 3);;
 	light.position.set(0,10,0);
 	normalScene.add(light);
-console.log(normalScene);
-  //Create template for a firefly
-  var flyGeometry = new THREE.SphereGeometry( 0.5, 14, 8 );
-  var flyMaterial = new THREE.ShaderMaterial(
-    {
-      uniforms: { },
-      vertexShader:   document.getElementById( 'vertexShader'   ).textContent,
-      fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
-      side: THREE.BackSide,
-      blending: THREE.AdditiveBlending,
-      transparent: true
-    }
-  );
 
   // Addding variable covid19 to normal scene ready for content to be added
 	normalScene.add( covid19 );
-  console.log(normalScene);
-  // Call function which creates and animates the initial covid in the scene
+
+  console.log(covid19);
+
+  //Call function which creates and animates the initial covid in the scene
   fireflyStart();
 
 }
@@ -265,7 +206,7 @@ function fireflyStart(){
       Anim(elm);
     })
 
-  }
+  };
 
 }
 
@@ -294,8 +235,8 @@ function ExplodeAnimation(x,y,z,inputScene){
     geometry.vertices.push( vertex );
     dirs.push({x:(Math.random() * movementSpeed)-(movementSpeed/2),y:(Math.random() * movementSpeed)-(movementSpeed/2),z:(Math.random() * movementSpeed)-(movementSpeed/2)});
   }
-  var material = new THREE.ParticleBasicMaterial( { size: objectSize,  color: 0xffd24d});
-  var particles = new THREE.ParticleSystem( geometry, material );
+  var material = new  THREE.PointsMaterial( { size: objectSize,  color: 0xffd24d});
+  var particles = new THREE.Points( geometry, material );
 
   this.object = particles;
   this.status = true;
@@ -306,7 +247,7 @@ function ExplodeAnimation(x,y,z,inputScene){
   this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
 
   inputScene.add( this.object  );
-console.log(normalScene);
+
   // Update particles
   this.update = function(){
     if (this.status == true){
@@ -401,18 +342,16 @@ var render = function () {
   // Update matrix of both scenes
   normalScene.updateMatrixWorld();
   scene.updateMatrixWorld();
-// console.log(normalScene);
+
   // Raycaster used for shooting covid19
   raycaster.setFromCamera( cameraPosition, camera );
   normalRaycaster.setFromCamera( cameraPosition, normalCamera);
 
   // Set what raycaster can detect
   var intersects = raycaster.intersectObjects( scene.children );
-  var normalIntersects = normalRaycaster.intersectObjects( normalScene.children );
+	var normalIntersects = normalRaycaster.intersectObjects( normalScene.children, true);
 
-	// var normalIntersects = normalRaycaster.intersectObjects( normalScene.children[3].children );
-
-  // update pCounnt for TWEEN movement
+  // update pCounbt for TWEEN movement
   var pCount = parts.length;
           while(pCount--) {
             parts[pCount].update();
@@ -423,34 +362,33 @@ var render = function () {
 
     // Set the fly to invisible
     normalIntersects[0].object.visible = false;
-    console.log(hold);
 
     // New explosion aninimation at coordinates of intersected object
     parts.push(new ExplodeAnimation(normalIntersects[0].object.position.x, normalIntersects[0].object.position.y,normalIntersects[0].object.position.z,normalScene));
 
     activeCovid--;
 
-    //healthBarValue--;
+    covidKilled++;
 
     // Set var fire back to false
     fire = false;
 
   } else if (fire == true && normalIntersects[0] == undefined) {
-console.log(normalIntersects, hold);
+
     // Set var fire back to false
     fire = false;
 
     activeCovid++
 
     // Launch a new fly into the scene
-    // launchFirefly();
+    launchFirefly();
   }
 
   // Update 'covid19 Left' to reflect number of covid19 in scene
   document.getElementById("covidLeft").innerHTML = "covid19 Left: " + activeCovid;
 
-  // Update 'Health bar' to reflect number of covid19 shot
-  // document.getElementById("healthBarValue").innerHTML = "Health Bar: " + healthBarShell;
+  // Update 'covid19 Killed' to reflect number of covid19 shot
+  // document.getElementById("covidKilled").innerHTML = "covid19 Killed: " + covidKilled;
 
   // When reset button is pressed put scene back to init
   document.getElementById("reset").addEventListener("click", function(event){
@@ -461,7 +399,7 @@ console.log(normalIntersects, hold);
 
     activeCovid=covidStart;
 
-    // healthBarValue = healthBarValue;
+    covidKilled = 0;
 
     covid19.children.visible = true;
 
