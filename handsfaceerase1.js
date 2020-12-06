@@ -212,8 +212,8 @@ function fireflyStart(){
 
 //Global variables for ExplodeAnimation
 var movementSpeed = 10;
-var totalObjects = 200;
-var objectSize = 0.3;
+var totalObjects = 400;
+var objectSize = 1;
 var sizeRandomness = 5;
 var dirs = [];
 var parts = [];
@@ -221,48 +221,50 @@ var parts = [];
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create explosion at x,y & of interesected object
 //////////////////////////////////////////////////////////////////////////////////
-// function ExplodeAnimation(x,y,z,inputScene){
-//   var geometry = new THREE.Geometry();
-//
-//   for (i = 0; i < totalObjects; i ++)
-//   {
-//     // Generate particlesto the number of totalObjects
-//     var vertex = new THREE.Vector3();
-//     vertex.x = x;
-//     vertex.y = y;
-//     vertex.z = z;
-//
-//     geometry.vertices.push( vertex );
-//     dirs.push({x:(Math.random() * movementSpeed)-(movementSpeed/2),y:(Math.random() * movementSpeed)-(movementSpeed/2),z:(Math.random() * movementSpeed)-(movementSpeed/2)});
-//   }
-//   var material = new  THREE.PointsMaterial( { size: objectSize,  color: 0xffd24d});
-//   var particles = new THREE.Points( geometry, material );
-//
-//   this.object = particles;
-//   this.status = true;
-//
-//   // Create knew direction based on movementSpeed and Math.random
-//   this.xDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-//   this.yDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-//   this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
-//
-//   normalScene.add( particles  );
-//
-//   // Update particles
-//   this.update = function(){
-//     if (this.status == true){
-//       var pCount = totalObjects;
-//       while(pCount--) {
-//         var particle =  this.object.geometry.vertices[pCount]
-//         particle.y += dirs[pCount].y;
-//         particle.x += dirs[pCount].x;
-//         particle.z += dirs[pCount].z;
-//       }
-//       this.object.geometry.verticesNeedUpdate = true;
-//     }
-//   }
-//
-// }
+function ExplodeAnimation(x,y,z,inputScene){
+  var geometry = new THREE.Geometry();
+
+  for (i = 0; i < totalObjects; i ++)
+  {
+
+      console.log(i, x, y, z, inputScene);
+    // Generate particlesto the number of totalObjects
+    var vertex = new THREE.Vector3();
+    vertex.x = x;
+    vertex.y = y;
+    vertex.z = z;
+
+    geometry.vertices.push( vertex );
+    dirs.push({x:(Math.random() * movementSpeed)-(movementSpeed/2),y:(Math.random() * movementSpeed)-(movementSpeed/2),z:(Math.random() * movementSpeed)-(movementSpeed/2)});
+  }
+  var material = new  THREE.PointsMaterial( { size: objectSize,  color: 0xffd24d});
+  var particles = new THREE.Points( geometry, material );
+
+  this.object = particles;
+  this.status = true;
+
+  // Create knew direction based on movementSpeed and Math.random
+  this.xDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+  this.yDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+  this.zDir = (Math.random() * movementSpeed)-(movementSpeed/2);
+
+  inputScene.add( particles  );
+
+  // Update particles
+  this.update = function(){
+    if (this.status == true){
+      var pCount = totalObjects;
+      while(pCount--) {
+        var particle =  this.object.geometry.vertices[pCount]
+        particle.y += dirs[pCount].y;
+        particle.x += dirs[pCount].x;
+        particle.z += dirs[pCount].z;
+      }
+      this.object.geometry.verticesNeedUpdate = true;
+    }
+  }
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to launch fly from AR pot into scene
@@ -361,10 +363,11 @@ var render = function () {
  	if (fire == true && normalIntersects[0] != undefined){
 
     // Set the fly to invisible
-    normalIntersects[0].object.visible = false;
+    normalIntersects[0].object.parent.visible = false;
+    console.log(normalIntersects[0], normalIntersects);
 
     // New explosion aninimation at coordinates of intersected object
-    parts.push(new ExplodeAnimation(normalIntersects[0].object.position.x, normalIntersects[0].object.position.y,normalIntersects[0].object.position.z,normalScene));
+    parts.push(new ExplodeAnimation(normalIntersects[0].point.x, normalIntersects[0].point.y,normalIntersects[0].point.z,normalScene));
 
     activeCovid--;
 
