@@ -5853,6 +5853,9 @@ ARjs.Source.prototype.init = function(onReady, onError){
 
 	// attach
         this.domElement = domElement
+				this.domElement.id = "video"
+				this.domElement.preload = 'auto'
+				this.domElement.loop = 'loop'
         this.domElement.style.position = 'absolute'
         this.domElement.style.top = '0px'
         this.domElement.style.left = '0px'
