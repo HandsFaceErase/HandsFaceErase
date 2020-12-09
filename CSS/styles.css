@@ -7,6 +7,8 @@
   height: 100%;
   width: 100%;
   overflow:hidden;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
 canvas{
@@ -16,6 +18,20 @@ canvas{
   padding: 0px;
   margin: 0px;
 }
+
+#video {
+  width:auto;
+  height: 100%;
+  position: absolute;
+}
+
+  /* video, canvas {
+    position: absolute;
+    display: flex;
+    height: inherit;
+    width: inherit;
+    z-index: -2;
+} */
 
 body {
   /* background-color: var(--lGrey); */
@@ -95,64 +111,6 @@ li{
   border: none;
 }
 
-/* .logo-image{
-   width: 150px;
-   height: 150px;
-   border-radius: 50%;
-   overflow: hidden;
-   margin-top: -35px;
-} */
-
-/* #overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 2;
-  cursor: pointer;
-} */
-
-/* #overlayImage{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1000px;
-  transform: translate(-50%,-50%);
- -ms-transform: translate(-50%,-50%);
-} */
-
-/* #PlayNow{
-  padding-top: 200px;
-} */
-
-/* button {
-  cursor: pointer;
-  background: transparent;
-  padding: 0;
-  border: none;
-  margin: 0;
-  outline: none;
-} */
-
-/* html,body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  touch-action: manipulation;
-  font-family: sans-serif;
-} */
-
-/* canvas{
-  position: fixed;
-  width: inherit;
-  height: inherit;
-} */
 
 img {
   display: block;
@@ -180,58 +138,12 @@ img {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
-  z-index: 3;
 }
 
 .noMargin{
  margin: 0px;
 }
 
-/* .splashScreen{
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  text-align: center;
-  min-height: 100%;
-  width:100%;
-  height:auto;
-  color: white;
-  background-image: url("Resources/Background.jpg");
-  z-index: 8;
-  transition: opacity 2s;
-  transition-timing-function: ease-out;
-} */
-
-/* .splashScreen p{
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.splashBack{
-  opacity: 0;
-  z-index: 0;
-}
-
-#splashButton{
-  margin-top: 20px;
-  margin-bottom: 20px;
-color: #fff;
-text-transform: uppercase;
-background: #d42f43;
-padding: 20px;
-border-radius: 5px;
-display: inline-block;
-border: none; */
-}
-
-/* #splashButton:hover{
-  background: #434343;
-letter-spacing: 1px;
--webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
--moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-transition: all 0.4s ease 0s;
-} */
 
 .flex{
   display:flex;
@@ -252,34 +164,14 @@ transition: all 0.4s ease 0s;
 }
 
 .infoBarContainer{
-  /* position:fixed; */
-  display: flex;
-  top:0;
-  left:0;
-  width: 100%;
   height: 10%;
-  padding: 0 0 0 0;
-  justify-content: center;
-  z-index: 1;
-}
-
-/* .levelUp{
+  width:100%;
   position: fixed;
   display: flex;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  text-shadow: 2px 2px #d42f43;;
-  opacity: 0;
-  top:0;
-  left:0;
-  transition: opacity 2s;
-  transition-timing-function: ease-out;
-} */
+  z-index: 6;
+}
 
 .opacity{
   opacity: 1;
@@ -314,7 +206,7 @@ transition: all 0.4s ease 0s;
 }
 
 .buttonContainer {
-  height: 89%;
+  height: 98%;
   width:100%;
   position: fixed;
   display: flex;
@@ -357,7 +249,7 @@ border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
-
+z-index: 1;
 }
 
 .dot-container{

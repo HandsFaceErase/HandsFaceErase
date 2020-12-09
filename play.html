@@ -26,28 +26,30 @@
   </audio> -->
 <div class="container-fluid container-play">
 <!-- <img src="Assets/mute2.png" onclick="document.getElementById('mute').pause()" /> -->
-  <div class="infoBarContainer">
-  <div class="infoBar">
-    <!-- <div class="flex"><img src="Assets/mute2.png" onclick="document.getElementById('mute').pause()" /></div> -->
-    <!-- <div class="flex" ><p id="covidKilled"></p></div> -->
-    <div class="flex healthBarShell"><p class="healthBarValue "></p></div>
-    <!-- <div class="flex"><audio controls autoplay loop><source src="Assets/Background.mp3"></audio></div> -->
-    <div class="flex"><p id="covidLeft"></p></div>
-  </div>
-  </div>
 
-  <div class="buttonContainer row noMargin">
-    <button class="fire" id="hands">HANDS</button>
-    <button class="fire" id="face">FACE</button>
-    <button class="fire" id="fire">ERASE</button>
-    <button class="reset" id="reset">Reset</button>
-  </div>
 
   <div class="dot-container">
    <span class="dot"></span>
-   <!-- <video id="video" width="320" height="240" preload autoplay loop muted></video> -->
-  <canvas id="canvas" width="320" height="240"></canvas>
+   <video id="video" preload autoplay loop muted></video>
+   <canvas id="canvas"></canvas>
  </div>
+</div>
+
+<div class="infoBarContainer">
+<div class="infoBar">
+  <!-- <div class="flex"><img src="Assets/mute2.png" onclick="document.getElementById('mute').pause()" /></div> -->
+  <!-- <div class="flex" ><p id="covidKilled"></p></div> -->
+  <div class="flex healthBarShell"><p class="healthBarValue "></p></div>
+  <!-- <div class="flex"><audio controls autoplay loop><source src="Assets/Background.mp3"></audio></div> -->
+  <div class="flex"><p id="covidLeft"></p></div>
+</div>
+</div>
+
+<div class="buttonContainer row noMargin">
+  <button class="fire" id="hands">HANDS</button>
+  <button class="fire" id="face">FACE</button>
+  <button class="fire" id="fire">ERASE</button>
+  <button class="reset" id="reset">Reset</button>
 </div>
 
   <!-- Custom Shader Code -->
@@ -95,14 +97,14 @@ void main() -->
   <!-- TweenMax.min.js handles most of the motion performed in the App -->
   <script src="JS/Tween.js"></script>
 
-  <!-- HANDS FACE ERASE Game -->
-  <script src="handsfaceerase.js"></script>
-
   <script src="JS/tracking-min.js"></script>
 
   <script src="JS/face-min.js"></script>
 
-  <script src="face.js"></script>
+  <!-- HANDS FACE ERASE Game -->
+  <script src="handsfaceerase.js"></script>
+
+  <!-- <script src="face.js"></script> -->
 
   <script src="JS/sketch.js"></script>
 
