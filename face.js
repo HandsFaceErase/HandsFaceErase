@@ -1,6 +1,5 @@
 window.onload = function() {
-setTimeout(() => {
-    var video = document.getElementsByTagName("video")[0];
+    var video = document.getElementById('video');
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 console.log("hellllo")
@@ -15,20 +14,10 @@ console.log("hellllo")
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       event.data.forEach(function(rect) {
-        context.strokeStyle = '#a64ceb';
-        context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-        context.font = '11px Helvetica';
-        context.fillStyle = "#fff";
-        context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-        context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+        // console.log(rect.x, rect.y);
+        // context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        // context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+        // context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
       });
     });
-
-    // var gui = new dat.GUI();
-    // gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
-    // gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
-    // gui.add(tracker, 'stepSize', 1, 5).step(0.1);
-
-  }, 5000);
-
   };

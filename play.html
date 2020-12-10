@@ -46,6 +46,23 @@
  </div>
 </div>
 
+<div class="infoBarContainer">
+<div class="infoBar">
+  <!-- <div class="flex"><img src="Assets/mute2.png" onclick="document.getElementById('mute').pause()" /></div> -->
+  <!-- <div class="flex" ><p id="covidKilled"></p></div> -->
+  <div class="flex healthBarShell"><p class="healthBarValue "></p></div>
+  <!-- <div class="flex"><audio controls autoplay loop><source src="Assets/Background.mp3"></audio></div> -->
+  <div class="flex"><p id="covidLeft"></p></div>
+</div>
+</div>
+
+<div class="buttonContainer row noMargin">
+  <button class="fire" id="hands">HANDS</button>
+  <button class="fire" id="face">FACE</button>
+  <button class="fire" id="fire">ERASE</button>
+  <button class="reset" id="reset">Reset</button>
+</div>
+
   <!-- Custom Shader Code -->
 <script id="vertexShader" type="x-shader/x-vertex">
 varying vec3 vNormal;
@@ -91,9 +108,21 @@ void main()
   <!-- TweenMax.min.js handles most of the motion performed in the App -->
   <script src="JS/Tween.js"></script>
 
+<<<<<<< HEAD
   <!-- HANDS FACE ERASE Game -->
   <script src="handsfaceerase.js"></script>
 
+=======
+  <script src="JS/tracking-min.js"></script>
+
+  <script src="JS/face-min.js"></script>
+
+  <!-- HANDS FACE ERASE Game -->
+  <script src="handsfaceerase.js"></script>
+
+  <!-- <script src="face.js"></script> -->
+
+>>>>>>> cd69ae51696a5a25b282a72708e4572ada851c3a
   <script src="JS/sketch.js"></script>
 
   <script src="postcode.js"></script>
