@@ -17,20 +17,79 @@ $(document).ready(function(){
   });
 });
 
+//Leaderboard sound
 $(document).ready(function() {
     var audioElement = document.createElement('audio');
     audioElement.setAttribute('src', 'Assets/Boris.mp3');
 
-    // audioElement.addEventListener('ended', function() {
-    //     this.play();
-    // }, false);
-
-  //   $('#pause').click(function() {
-  //     audioElement.pause();
-  //     $("#status").text("Status: Paused");
-  // });
-
     $('#boris').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
+});
+
+//Background music
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'Assets/Background.mp3');
+
+    audioElement.addEventListener('ended', function() {
+        this.play();
+    }, false);
+
+    // audioElement.addEventListener("canplay",function(){
+    //     $("#length").text("Duration:" + audioElement.duration + " seconds");
+    //     $("#source").text("Source:" + audioElement.src);
+    //     $("#status").text("Status: Ready to play").css("color","green");
+    // });
+    //
+    // audioElement.addEventListener("timeupdate",function(){
+    //     $("#currentTime").text("Current second:" + audioElement.currentTime);
+    // });
+
+    $('#background').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
+
+    $('#pause').click(function() {
+        audioElement.pause();
+        $("#status").text("Status: Paused");
+    });
+
+    // $('#restart').click(function() {
+    //     audioElement.currentTime = 0;
+    // });
+});
+
+//Hands sound
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'Assets/hands.mp3');
+
+    $('#soundH').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
+});
+
+//Face sound
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'Assets/face.mp3');
+
+    $('#soundF').click(function() {
+        audioElement.play();
+        $("#status").text("Status: Playing");
+    });
+});
+
+//Erase sound
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'Assets/erase.mp3');
+
+    $('#soundE').click(function() {
         audioElement.play();
         $("#status").text("Status: Playing");
     });
