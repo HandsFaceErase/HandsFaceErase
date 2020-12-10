@@ -23,24 +23,6 @@
 
 <div class="container-fluid container-play">
 
-  <div class="infoBarContainer">
-  <div class="infoBar">
-
-    <!-- <div class="flex" ><p id="covidKilled"></p></div> -->
-    <div class="flex healthBarShell"><p class="healthBarValue "></p></div>
-    <!-- <button id="background">Play</button>
-   <button id="pause">Pause</button> -->
-    <div class="flex"><p id="covidLeft"></p></div>
-  </div>
-  </div>
-
-  <div class="buttonContainer row noMargin">
-    <button class="fire" id="hand" id="soundE">HANDS</button>
-    <button class="fire" id="face">FACE</button>
-    <button class="fire" id="fire">ERASE</button>
-    <button class="reset" id="reset">Reset</button>
-  </div>
-
   <div class="dot-container">
    <span class="dot"></span>
  </div>
@@ -64,7 +46,7 @@
 </div>
 
   <!-- Custom Shader Code -->
-<script id="vertexShader" type="x-shader/x-vertex">
+<!-- <script id="vertexShader" type="x-shader/x-vertex">
 varying vec3 vNormal;
 void main()
 {
@@ -73,15 +55,15 @@ void main()
 }
 </script>
 
-<!-- fragment shader a.k.a. pixel shader -->
-<script id="fragmentShader" type="x-shader/x-vertex">
+ fragment shader a.k.a. pixel shader -->
+<!-- <script id="fragmentShader" type="x-shader/x-vertex">
 varying vec3 vNormal;
 void main()
 {
   float intensity = pow( 0.08 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 2.5 );
   gl_FragColor = vec4(0.99, 0.97, 0.82,1.0) * intensity;
 }
-</script>
+</script> -->
 
 
   <!-- Three.js library stored with file -->
@@ -108,9 +90,12 @@ void main()
   <!-- TweenMax.min.js handles most of the motion performed in the App -->
   <script src="JS/Tween.js"></script>
 
+ <script scr="JS/tracking-min.js"></script>
+
+  <script scr="JS/face-min.js"></script>
+
   <!-- HANDS FACE ERASE Game -->
   <script src="handsfaceerase.js"></script>
-
 
   <script src="JS/sketch.js"></script>
 
