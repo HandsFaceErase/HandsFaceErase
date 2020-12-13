@@ -6,9 +6,9 @@ var normalRaycaster = new THREE.Raycaster(), raycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
 var initfly;
-var covid = 5;
-var covidStart = 5;
-var activeCovid = 5;
+var covid = 25;
+var covidStart = 25;
+var activeCovid = 25;
 var covidKilled = 0;
 var covid19 = new THREE.Group();
 var ARcovid19 = new THREE.Group();
@@ -65,8 +65,8 @@ function init(){
         sourceType : 'webcam',
       })
 
-// // Event Listeners and on action calls
-//
+// Event Listeners and on action calls
+
       // Resize conent when camera is ready
       arToolkitSource.init(function onReady(){
         onResize()
@@ -82,9 +82,9 @@ function init(){
         fire = true;
         event.stopImmediatePropagation();
       });
-//
-// // AR initialisation
-//
+
+// AR initialisation
+
       function onResize(){
         arToolkitSource.onResizeElement()
         // arToolkitSource.copyElementSizeTo(renderer.domElement)
@@ -149,7 +149,7 @@ function init(){
                     jar.rotation.y = -1.2;
                     jar.rotation.x = -1.0;
                     jar.rotation.z = 0;
-                    jar.position.set(0,0,0);
+                    // jar.position.set(0,0,0);
                     jar.shadow;
                     jarGroup.add(jar);
                   }
@@ -162,31 +162,35 @@ function init(){
             // Addding variable covid19 to normal scene ready for content to be added
           	normalScene.add( covid19 );
 
-      //Call function which creates and animates the initial covid in the scene
-      fireflyStart();
 
 }
+
+window.onload = function() {
+fireflyStart();
+};
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create initial covid19 (called in 'init')
 //////////////////////////////////////////////////////////////////////////////////
 function fireflyStart(){
 
+console.log(covid19);
   //For-Loop to create and inititalise the number of covid19 in global var 'covid'
   for (var i=covid;i--;){
-
+    console.log(i);
     covid19[i] = initfly.clone();
-
+    var Div = covid19[i];
     // For each set random start location in scene
-    covid19[i].position.x = random(-7,7);
-    covid19[i].position.y = random(-7,7);
-    covid19[i].position.z = random(-7,7);
+    Div.position.x = random(-7,7);
+    Div.position.y = random(-7,7);
+    Div.position.z = random(-7,7);
 
     // Call to function which adds motion
-    Anim(covid19[i]);
+    Anim(Div);
 
     // Adds covid19 to scene via the already added group 'covid19'
-    covid19.children.push(covid19[i]);
+    covid19.children.push(Div);
+
 
   };
 
@@ -212,7 +216,7 @@ function fireflyStart(){
       Anim(elm);
     })
 
-  }
+  };
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -314,6 +318,7 @@ var render = function () {
             parts[pCount].update();
           }
 
+
   // If 'Fire' is clicked and raycast is intersecting with fly
  	if (fire == true && normalIntersects[0] != undefined){
 
@@ -329,7 +334,7 @@ var render = function () {
 
   } else if (fire == true && normalIntersects[0] == undefined) {
 
-    activeCovid++
+    // activeCovid++
 
     // Launch a new fly into the scene
     fireflyStart();
