@@ -137,7 +137,7 @@ function init(){
       //Covid Instance
             var jar;
             var jarGroup = new THREE.Object3D();
-            normalScene.add(jarGroup);
+            // normalScene.add(jarGroup);
             var materialLoader = new THREE.MTLLoader();
             materialLoader.load('Assets/covid/covid19.mtl', function (material) {
                 var objLoader = new THREE.OBJLoader()
@@ -214,7 +214,6 @@ function fireflyStart(){
 
   }
 }
-
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create explosion at x,y & of interesected object
