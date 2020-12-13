@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 //		Declare global variables
 //////////////////////////////////////////////////////////////////////////////////
-var camera, normalCamera, scene, normalScene, controls, renderer, normalRenderer, geometry, material, texture;
-var normalRaycaster = new THREE.Raycaster(), raycaster = new THREE.Raycaster();
+var normalCamera, normalScene, controls, normalRenderer, geometry, material, texture;
+var normalRaycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
 var initfly;
@@ -15,6 +15,9 @@ var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
 var fire = false;
 var reset = false;
+var covidIntialised = false;
+var covidAttack = false;
+var health = 1000;
 cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
@@ -38,10 +41,8 @@ function init(){
       normalScene = new THREE.Scene();
 
       // Create a camera for each scene
-      // camera = new THREE.PerspectiveCamera();
       normalCamera = new THREE.PerspectiveCamera();
       normalCamera.position.set(0,0,0);
-      // scene.add(camera);
       normalScene.add(normalCamera);
 
       //Enable orientation controls so user can look around the scene (also updated at render)
@@ -49,16 +50,13 @@ function init(){
       controls.update();
 
       // Create a WebGL renderer and add prefernces
-      // renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       normalRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
       // Set the size of the renderers to the inner width and inner height of the window
-      // renderer.setSize( window.innerWidth, window.innerHeight );
       normalRenderer.setSize( window.innerWidth, window.innerHeight );
 
       // Add in the created DOM elements to the body of the document
       document.body.appendChild( normalRenderer.domElement );
-      // document.body.appendChild( renderer.domElement );
 
       // Set source type to webcam for AR content
       arToolkitSource = new THREEx.ArToolkitSource({
@@ -87,7 +85,6 @@ function init(){
 
       function onResize(){
         arToolkitSource.onResizeElement()
-        // arToolkitSource.copyElementSizeTo(renderer.domElement)
         arToolkitSource.copyElementSizeTo( normalRenderer.domElement)
         if( arToolkitContext.arController !== null ){
           arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas)
@@ -99,20 +96,12 @@ function init(){
         cameraParametersUrl: 'data/camera_para.dat',
         detectionMode: 'mono',
       })
-//
+
       // Initialize AR scene
       arToolkitContext.init(function onCompleted(){
-//         // Copy projection matrix to camera
-//         camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+        // Copy projection matrix to camera
         normalCamera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
       })
-
-      // Initalise controls for camera
-      // var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
-      //   type : 'pattern',
-      //   patternUrl : 'data/CircleDash.patt',
-      //   changeMatrixMode: 'cameraTransformMatrix'
-      // })
 
       //Set scene to invivible (set back to visbile in render when marker detected)
       scene.visible = false;
@@ -162,61 +151,71 @@ function init(){
             // Addding variable covid19 to normal scene ready for content to be added
           	normalScene.add( covid19 );
 
-
 }
-
-window.onload = function() {
-fireflyStart();
-};
 
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create initial covid19 (called in 'init')
 //////////////////////////////////////////////////////////////////////////////////
 function fireflyStart(){
 
-console.log(covid19);
-  //For-Loop to create and inititalise the number of covid19 in global var 'covid'
-  for (var i=covid;i--;){
-    console.log(i);
-    covid19[i] = initfly.clone();
-    var Div = covid19[i];
-    // For each set random start location in scene
-    Div.position.x = random(-7,7);
-    Div.position.y = random(-7,7);
-    Div.position.z = random(-7,7);
+//For-Loop to create and inititalise the number of covid19 in global var 'covid'
+      if (covidIntialised == false) {
+        for (var i=covid;i--;){
+          console.log(i);
+          var Div = initfly.clone();
+          // For each set random start location in scene
+          Div.position.x = random(-7,7);
+          Div.position.y = random(-7,7);
+          Div.position.z = random(-7,7);
 
-    // Call to function which adds motion
-    Anim(Div);
+          // Call to function which adds motion
+          Anim(Div);
 
-    // Adds covid19 to scene via the already added group 'covid19'
-    covid19.children.push(Div);
+          // Adds covid19 to scene via the already added group 'covid19'
+          covid19.children.push(Div);
 
+          covidIntialised = true;
 
-  };
+      }; }
 
-  // Function to animated the covid created above to move using Tween.js
-  function Anim(elm){
+// Function to animated the covid created above to move using Tween.js
+      function Anim(elm){
 
-    // Set position and target variables
-    var position = elm.position;
-    var target = {x:random(-7,7),y:random(-7,7),z:random(-7,7)};
+        // Set position and target variables
+        var position = elm.position;
 
-    // Perform tween which moves from current position to random position
-    tween = new TWEEN.Tween(position).to(target, random(4000,8000)).start();
+        var covidAttackChance = ~~random(0, 100);
 
-    // On each tween frame the position of each covid is updated
-    tween.onUpdate(function() {
-      elm.position.x = position.x;
-      elm.position.y = position.y;
-      elm.position.z = position.z;
-    });
+        if (covidAttackChance == 1) {
 
-    // Once the tween has completed all this function again (created a loop)
-    tween.onComplete( function() {
-      Anim(elm);
-    })
+          var target = {x:0,y:0,z:0};
 
-  };
+          console.log("Attack!");
+          covidAttack = true;
+          document.getElementById("covidAttack").style.display = "block";
+
+        } else {
+
+          var target = {x:random(-7,7),y:random(-7,7),z:random(-7,7)};
+
+        }
+
+        // Perform tween which moves from current position to random position
+        tween = new TWEEN.Tween(position).to(target, random(4000,8000)).start();
+
+        // On each tween frame the position of each covid is updated
+        tween.onUpdate(function() {
+          elm.position.x = position.x;
+          elm.position.y = position.y;
+          elm.position.z = position.z;
+        });
+
+        // Once the tween has completed all this function again (created a loop)
+        tween.onComplete( function() {
+          Anim(elm);
+        })
+
+      };
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -232,6 +231,7 @@ var dirs = [];
 var parts = [];
 
 function ExplodeAnimation(x,y,z,inputScene){
+
   var geometry = new THREE.Geometry();
 
   for (i = 0; i < totalObjects; i ++)
@@ -273,7 +273,6 @@ function ExplodeAnimation(x,y,z,inputScene){
       this.object.geometry.verticesNeedUpdate = true;
     }
   }
-
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -295,21 +294,13 @@ var render = function () {
   // Update the TWEEN for animations in the application
   TWEEN.update();
 
-  // Set AR scene to vivible when marker is detected
-  // if( arToolkitSource.ready === false )	return
-  // arToolkitContext.update( arToolkitSource.domElement )
-  // // scene.visible = camera.visible
-
   // Update matrix of both scenes
   normalScene.updateMatrixWorld();
-  // scene.updateMatrixWorld();
 
   // Raycaster used for shooting covid19
-  // raycaster.setFromCamera( cameraPosition, camera );
   normalRaycaster.setFromCamera( cameraPosition, normalCamera);
 
   // Set what raycaster can detect
-  // var intersects = raycaster.intersectObjects( scene.children );
 	var normalIntersects = normalRaycaster.intersectObjects( normalScene.children, true);
 
   // update pCounbt for TWEEN movement
@@ -317,7 +308,6 @@ var render = function () {
           while(pCount--) {
             parts[pCount].update();
           }
-
 
   // If 'Fire' is clicked and raycast is intersecting with fly
  	if (fire == true && normalIntersects[0] != undefined){
@@ -330,19 +320,21 @@ var render = function () {
 
     activeCovid--;
 
-    // covidKilled++;
-
   } else if (fire == true && normalIntersects[0] == undefined) {
-
-    // activeCovid++
-
-    // Launch a new fly into the scene
+    console.log(covid19)
+    // Launch scene
     fireflyStart();
-
   }
 
   // Set var fire back to false
   fire = false;
+
+  //While under attack decrease health slowly
+
+if (covidAttack == true & health > 0) {
+  health--;
+  console.log("Health: " + health);
+}
 
   // Update 'covid19 Left' to reflect number of covid19 in scene
   document.getElementById("covidLeft").innerHTML = "Covid: " + activeCovid;
@@ -354,21 +346,38 @@ var render = function () {
     covid19.remove(covid19.children[i]);
     }
 
-    activeCovid=covidStart;
+    console.log(covid19)
 
-    covidKilled = 0;
+    activeCovid=covidStart;
 
     covid19.children.visible = true;
 
     event.stopPropagation();
   });
 
+  // When hands button is pressed, stop health degration and clear overlay
+  document.getElementById("hands").addEventListener("click", function(event){
+
+    console.log("Washing Hands");
+    covidAttack = false;
+    document.getElementById("covidAttack").style.display = "none";
+
+  });
+
+  //Show game over text when health is 0 or all covid gone
+  // Display level up screen when no firelfies are left in scene
+   if (activeCovid == 0 || health == 0) {
+
+     document.getElementById("gameOver").classList.add("opacity");
+     document.getElementById("gameOver").style.opacity = '1';
+ }
+
   // Update controls for device orientation
   controls.update();
 
   // Render the both scenes
   normalRenderer.render( normalScene, normalCamera );
-  // renderer.render( scene, camera );
+
 }
 
 // Call Initalise function
