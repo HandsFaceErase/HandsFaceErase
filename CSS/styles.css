@@ -325,6 +325,7 @@ z-index: 1;
 /* Overlay */
 #simplemodal-overlay {
   background-color:#000;
+  z-index: 1;
 }
 
 /* Container */
