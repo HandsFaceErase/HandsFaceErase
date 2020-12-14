@@ -365,7 +365,7 @@ if (covidAttack == true & health > 0) {
   });
 
   //Show game over text when health is 0 or all covid gone
-  // Display level up screen when no firelfies are left in scene
+  // Display Game over screen when no COVID are left in scene
    if (activeCovid == 0 || health == 0) {
 
      document.getElementById("gameOver").classList.add("opacity");
