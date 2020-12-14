@@ -17,7 +17,7 @@ var fire = false;
 var reset = false;
 var covidIntialised = false;
 var covidAttack = false;
-var health = 1000;
+var health = 500;
 cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
@@ -194,6 +194,7 @@ function fireflyStart(){
           covidAttack = true;
           document.getElementById("covidAttack").style.display = "block";
 
+
         } else {
 
           var target = {x:random(-7,7),y:random(-7,7),z:random(-7,7)};
@@ -333,6 +334,7 @@ var render = function () {
 
 if (covidAttack == true & health > 0) {
   health--;
+  $('.healthBarValue').css('width', health/5 + '%' )
   console.log("Health: " + health);
 }
 
