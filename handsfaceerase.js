@@ -13,7 +13,7 @@ var covidKilled = 0;
 var covid19 = new THREE.Group();
 var ARcovid19 = new THREE.Group();
 var cameraPosition = new THREE.Vector2();
-var fire = false;
+var erase = false;
 var reset = false;
 var covidIntialised = false;
 var covidAttack = false;
@@ -75,9 +75,9 @@ function init(){
         onResize()
       })
 
-      // Listen for Fire button to be pressed and sent global var 'fire' to true (used at render raycast)
-      document.getElementById("fire").addEventListener("click", function(){
-        fire = true;
+      // Listen for Erase button to be pressed and sent global var 'Erase' to true (used at render raycast)
+      $('#erase').click(function() {
+        erase = true;
         event.stopImmediatePropagation();
       });
 
@@ -310,8 +310,8 @@ var render = function () {
             parts[pCount].update();
           }
 
-  // If 'Fire' is clicked and raycast is intersecting with fly
- 	if (fire == true && normalIntersects[0] != undefined){
+  // If 'erase' is clicked and raycast is intersecting with fly
+ 	if (erase == true && normalIntersects[0] != undefined){
 
     // Set the fly to invisible
     normalIntersects[0].object.parent.visible = false;
@@ -321,14 +321,14 @@ var render = function () {
 
     activeCovid--;
 
-  } else if (fire == true && normalIntersects[0] == undefined) {
+  } else if (erase == true && normalIntersects[0] == undefined) {
     console.log(covid19)
     // Launch scene
     fireflyStart();
   }
 
-  // Set var fire back to false
-  fire = false;
+  // Set var erase back to false
+  erase = false;
 
   //While under attack decrease health slowly
 

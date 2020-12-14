@@ -9,10 +9,12 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
 
   <!-- Scripts & Stylesheets -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script scr="curl -sI 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure=%7B%22name%22:%22areaName%22%7D' | grep -i 'last-modified'"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+  <!-- <script scr="curl -sI 'https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=nation;areaName=england&structure=%7B%22name%22:%22areaName%22%7D' | grep -i 'last-modified'"></script> -->
   <link rel="stylesheet" href="CSS/styles.css">
 
 </head>
@@ -35,31 +37,54 @@
 
   <!-- Control Buttons -->
   <div class="buttonContainer row noMargin">
-    <button class="fire" id="hands">HANDS</button>
-    <button class="fire" id="face">FACE</button>
-    <button class="fire" id="fire">ERASE</button>
+    <button class="actionButton" id="hands">HANDS</button>
+    <button class="actionButton" id="face">FACE</button>
+    <button class="actionButton" id="erase">ERASE</button>
     <button class="reset" id="reset">Reset</button>
   </div>
 
-  <!-- <div id='content'> -->
-  <div id='basic-modal'></div>
+  <!-- Information modal -->
 
-  <!-- modal content -->
-  <div id="basic-modal-content">
-    <h3>Basic Modal Dialog</h3>
-    <p>For this demo, SimpleModal is using this "hidden" data for its content. You can also populate the modal dialog with an AJAX response, standard HTML or DOM element(s).</p>
-    <p>Examples:</p>
-    <p><code>$('#basicModalContent').modal(); // jQuery object - this demo</code></p>
-    <p><code>$.modal(document.getElementById('basicModalContent')); // DOM</code></p>
-    <p><code>$.modal('&lt;p&gt;&lt;b&gt;HTML&lt;/b&gt; elements&lt;/p&gt;'); // HTML</code></p>
-    <p><code>$('&lt;div&gt;&lt;/div&gt;').load('page.html').modal(); // AJAX</code></p>
-  </div>
+  <!-- <div class="modal fade" id="infoModal" role="dialog">
+  <div class="modal-dialog"> -->
 
-  <!-- preload the images -->
-  <div style='display:none'>
-    <img src='Assets/x.png' alt='' />
-  </div>
-</div>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Information</h1>
+      </div>
+      <div class="modal-body">
+        <h3>Welcome to Hands Face Erase</h3>
+        <h4>An interactive game based around COVID.</h4>
+         <p>With all the news and new information,
+           we get shown everyday causing
+           confusion we wanted to design an
+           interactive and fun way to learn
+           about covid-19 helping to keep everyone safe,
+           either at home or while you
+           wait in those essential queues why not give
+           Hands Face Erase a go</p>
+        <h5>How to play:</h5>
+        <ul>
+          <li>Ensure you are always two meters away from
+              others while playing Hands Face Erase.</li>
+           <li>COVID is all around us, and it’s your job to
+               keep yourself and everyone else safe.</li>
+            <li>HANDS- Clean your hands if any COVID hits you,
+            this will then stop your health bar from going down.</li>
+            <li>FACE- if anyone comes in front of your camera
+                without wearing a face mask throw one on
+                their face in order to help everyone
+                be protected.</li>
+            <li>ERASE- use your Anti-bacterial spray to clean the
+                area of COVID spores and stop them
+                from touching you and others.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
   <!-- Covid Attack Overlay -->
   <div id="covidAttack" class="covidAttack"></div>

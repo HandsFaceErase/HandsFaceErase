@@ -179,7 +179,7 @@ img {
   transition-timing-function: ease-in-out;
 }
 
-.fire{
+.actionButton{
   /* position: flex; */
   /* vertical-a?lign: bottom; */
   align-items: center;
@@ -217,6 +217,7 @@ img {
 
 .reset{
   /* position: fixed; */
+  align-items: center;
   border-style:none;
   bottom:0;
   left: 0;
@@ -318,35 +319,39 @@ z-index: 1;
   transition-timing-function: ease-in;
 }
 
-#basic-modal-content {
+/* #basic-modal-content {
   display:none;
-}
+} */
 
 /* Overlay */
-#simplemodal-overlay {
+/* #simplemodal-overlay {
   background-color:#000;
+<<<<<<< Updated upstream
   z-index: 1;
 }
+=======
+} */
+>>>>>>> Stashed changes
 
 /* Container */
-#simplemodal-container {
+/* #simplemodal-container {
   height:360px;
   width:600px;
   color:#bbb;
   background-color:#333;
   border:4px solid #444;
   padding:12px;
-}
+} */
 
-#simplemodal-container .simplemodal-data {
+/* #simplemodal-container .simplemodal-data {
   padding:8px;
-}
+} */
 
-#simplemodal-container a {
+/* #simplemodal-container a {
   color:#ddd;
-}
+} */
 
-#simplemodal-container a.modalCloseImg {
+/* #simplemodal-container a.modalCloseImg {
   background:url(../Assets/x.png) no-repeat;
   width:25px;
   height:29px;
@@ -356,8 +361,8 @@ z-index: 1;
   top:-15px;
   right:-16px;
   cursor:pointer;
-}
+} */
 
-#simplemodal-container h3 {
+/* #simplemodal-container h3 {
   color:#84b8d9;
-}
+} */
