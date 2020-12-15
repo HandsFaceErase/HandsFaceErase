@@ -55,11 +55,7 @@ $("#playInfoModal").modal({backdrop: true});
 
 });
 
-
-
-
-
-//Background music
+//Background music not applied as we decided it wasn't needed but can be done
 // $(document).ready(function() {
 //     var audioElement = document.createElement('audio');
 //     audioElement.setAttribute('src', 'Assets/Background.mp3');

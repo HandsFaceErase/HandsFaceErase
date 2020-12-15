@@ -1,6 +1,4 @@
-//////////////////////////////////////////////////////////////////////////////////
-//		Declare global variables
-//////////////////////////////////////////////////////////////////////////////////
+//Declare Global variables
 var normalCamera, normalScene, controls, normalRenderer, geometry, material, texture;
 var normalRaycaster = new THREE.Raycaster();
 var arToolkitContext;
@@ -26,12 +24,9 @@ cameraPosition.x = 0;
 cameraPosition.y = 0;
 cameraPosition.z = 0;
 
-//////////////////////////////////////////////////////////////////////////////////
-//		Initialise
-//////////////////////////////////////////////////////////////////////////////////
+//Initialise
 function init(){
-
-// Initialise AR base scene and rendering preferences
+//Initialise AR base scene and rendering preferences
 
       // Set-up AR.js scene
       var video =  arToolkitSource;
@@ -159,29 +154,29 @@ function init(){
           	normalScene.add(light);
 
       //Covid Instance
-            var jar;
-            var jarGroup = new THREE.Object3D();
-            // normalScene.add(jarGroup);
+            var objcovid;
+            var objcovidGroup = new THREE.Object3D();
+            // normalScene.add(objcovidGroup);
             var materialLoader = new THREE.MTLLoader();
             materialLoader.load('Assets/covid/covid19.mtl', function (material) {
                 var objLoader = new THREE.OBJLoader()
                 objLoader.setMaterials(material)
                 objLoader.load(
                   'Assets/covid/covid19.obj',
-                  function (jar) {
-                    jar.scale.set(10,10,10);
-                    jar.rotation.y = -1.2;
-                    jar.rotation.x = -1.0;
-                    jar.rotation.z = 0;
-                    // jar.position.set(0,0,0);
-                    jar.shadow;
-                    jarGroup.add(jar);
+                  function (objcovid) {
+                    objcovid.scale.set(10,10,10);
+                    objcovid.rotation.y = -1.2;
+                    objcovid.rotation.x = -1.0;
+                    objcovid.rotation.z = 0;
+                    // objcovid.position.set(0,0,0);
+                    objcovid.shadow;
+                    objcovidGroup.add(objcovid);
                   }
                 )
               })
 
             //Store the covid instance in a variable
-            initfly=jarGroup;
+            initfly=objcovidGroup;
 
             // Addding variable covid19 to normal scene ready for content to be added
           	normalScene.add( covid19 );
@@ -191,7 +186,7 @@ function init(){
 //////////////////////////////////////////////////////////////////////////////////
 //		Function to create initial covid19 (called in 'init')
 //////////////////////////////////////////////////////////////////////////////////
-function fireflyStart(){
+function covid19Start(){
 
 //For-Loop to create and inititalise the number of covid19 in global var 'covid'
       if (covidIntialised == false) {
@@ -254,9 +249,7 @@ function fireflyStart(){
       };
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-//		Function to create explosion at x,y & of interesected object
-//////////////////////////////////////////////////////////////////////////////////
+//Function to create explosion at x,y & of interesected object
 
 //Global variables for ExplodeAnimation
 var movementSpeed = 10;
@@ -311,9 +304,9 @@ function ExplodeAnimation(x,y,z,inputScene){
   }
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-//		Function to reset game
-//////////////////////////////////////////////////////////////////////////////////
+
+//Function to reset game
+
 function resetGame(){
 
   // Set covidAttack to false incase under attack
@@ -348,18 +341,14 @@ function resetGame(){
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-//		Function to create random number between two povided points
-//////////////////////////////////////////////////////////////////////////////////
+//Function to create random number between two povided points
 function random(min,max){
 
     return Math.random()*(max-min+1)+min;
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-//		Render (repeated loop)
-//////////////////////////////////////////////////////////////////////////////////
+//Render (repeated loop)
 var render = function () {
 
   requestAnimationFrame( render );
@@ -397,7 +386,7 @@ var render = function () {
   } else if (erase == true && normalIntersects[0] == undefined) {
 
     // Launch scene
-    fireflyStart();
+    covid19Start();
 
   }
 

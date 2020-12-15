@@ -1,3 +1,5 @@
+/* The CSS allows you to style everything within the code, the layout will be iteam you wish to style then the style you wish to apply such as color, font, and sizing */
+
 :root {
   --lBlue: #41B6E6;
   --lGrey: #E8EDEE;
@@ -24,14 +26,6 @@ canvas{
   height: 100%;
   position: absolute;
 }
-
-  /* video, canvas {
-    position: absolute;
-    display: flex;
-    height: inherit;
-    width: inherit;
-    z-index: -2;
-} */
 
 .indexBody {
   /* background-color: var(--lGrey); */
@@ -78,7 +72,6 @@ h5,h6{
 p{
   color: black;
   text-align: center;
-  /* padding: 10px; */
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 1px;
@@ -184,8 +177,6 @@ img {
 }
 
 .actionButton{
-  /* position: flex; */
-  /* vertical-a?lign: bottom; */
   align-items: center;
   bottom:0;
   font-size: 20px;
@@ -220,7 +211,6 @@ img {
 }
 
 .reset{
-  /* position: fixed; */
   align-items: center;
   border-style:none;
   bottom:0;
@@ -316,47 +306,3 @@ z-index: 1;
     background-color: rgba(255,0,0,.2);
   }
 }
-
-/* #basic-modal-content {
-  display:none;
-} */
-
-/* Overlay */
-/* #simplemodal-overlay {
-  background-color:#000;
-  z-index: 1;
-}
-
-/* Container */
-/* #simplemodal-container {
-  height:360px;
-  width:600px;
-  color:#bbb;
-  background-color:#333;
-  border:4px solid #444;
-  padding:12px;
-} */
-
-/* #simplemodal-container .simplemodal-data {
-  padding:8px;
-} */
-
-/* #simplemodal-container a {
-  color:#ddd;
-} */
-
-/* #simplemodal-container a.modalCloseImg {
-  background:url(../Assets/x.png) no-repeat;
-  width:25px;
-  height:29px;
-  display:inline;
-  z-index:3200;
-  position:absolute;
-  top:-15px;
-  right:-16px;
-  cursor:pointer;
-} */
-
-/* #simplemodal-container h3 {
-  color:#84b8d9;
-} */
