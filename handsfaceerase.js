@@ -185,8 +185,7 @@ function init(){
 
 }
 
-
-//		Function to create initial covid19 (called in 'init')
+//Function to create initial covid19 (called in 'init')
 
 function covid19Start(){
 
@@ -253,7 +252,7 @@ function covid19Start(){
       };
 }
 
-// Function to create explosion at x,y & of interesected object
+//Function to create explosion at x,y & of interesected object
 
 //Global variables for ExplodeAnimation
 var movementSpeed = 10;
@@ -308,7 +307,6 @@ function ExplodeAnimation(x,y,z,inputScene){
   }
 }
 
-
 //Function to reset game
 
 function resetGame(){
@@ -345,7 +343,7 @@ function resetGame(){
 
 }
 
-// Function to create random number between two povided points
+//Function to create random number between two povided points
 
 function random(min,max){
 
@@ -353,7 +351,7 @@ function random(min,max){
 
 }
 
-// Render (repeated loop)
+//Render (repeated loop)
 
 var render = function () {
 
@@ -466,8 +464,10 @@ var render = function () {
 
 }
 
-// Call Initalise function
+//Call Initalise function
+
 init();
 
-// Call Render function
+//Call Render function
+
 render();

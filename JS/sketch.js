@@ -11,20 +11,8 @@ $(document).ready( function() {
      $("#infoModal").modal({backdrop: true});
    });
 
-//Leaderboard modal and sound
-   $("#leaderboard").click(function(){
-     $("#leaderModal").modal({backdrop: true});
-
-     var borisAudioElement = document.createElement('audio');
-     borisAudioElement.setAttribute('src', 'Assets/Boris.mp3');
-
-     $('#boris').click(function() {
-         borisAudioElement.play();
-         $("#status").text("Status: Playing");
-     });
-   });
-
-$("#playInfoModal").modal({backdrop: true});
+//Show information on load of the play page
+  $("#playInfoModal").modal({backdrop: true});
 
 //Hands sound
    var handsAudioElement = document.createElement('audio');
