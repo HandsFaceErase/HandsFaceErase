@@ -189,12 +189,12 @@ img {
   margin: 10px;
   display: flex;
   justify-content: center;
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
   touch-action: manipulation;
-  background-color: #f7f7f7;
+  background-color: var(--lGrey);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
   background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
   background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
