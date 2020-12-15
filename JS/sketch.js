@@ -54,37 +54,3 @@ $("#playInfoModal").modal({backdrop: true});
    });
 
 });
-
-//Background music not applied as we decided it wasn't needed but can be done
-// $(document).ready(function() {
-//     var audioElement = document.createElement('audio');
-//     audioElement.setAttribute('src', 'Assets/Background.mp3');
-//
-//     audioElement.addEventListener('ended', function() {
-//         this.play();
-//     }, false);
-//
-//     // audioElement.addEventListener("canplay",function(){
-//     //     $("#length").text("Duration:" + audioElement.duration + " seconds");
-//     //     $("#source").text("Source:" + audioElement.src);
-//     //     $("#status").text("Status: Ready to play").css("color","green");
-//     // });
-//     //
-//     // audioElement.addEventListener("timeupdate",function(){
-//     //     $("#currentTime").text("Current second:" + audioElement.currentTime);
-//     // });
-//
-//     $('#background').click(function() {
-//         audioElement.play();
-//         $("#status").text("Status: Playing");
-//     });
-//
-//     $('#pause').click(function() {
-//         audioElement.pause();
-//         $("#status").text("Status: Paused");
-//     });
-//
-//     // $('#restart').click(function() {
-//     //     audioElement.currentTime = 0;
-//     // });
-// });

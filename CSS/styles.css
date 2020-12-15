@@ -15,9 +15,6 @@
 
 canvas{
   position: fixed;
-  /* display: flex;
-  justify-content: center;
-  align-self: center; */
   width: inherit;
   height: 100%;
   padding: 0px;
@@ -31,18 +28,22 @@ canvas{
 }
 
 .indexBody {
-  /* background-color: var(--lGrey); */
   background-image: url("../Assets/High-Street-Blurred.jpg");
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
 }
 
-/* .playBody {
-  align-content: center;
+.maskContainer{
   display: flex;
   justify-content: center;
-} */
+  align-self: center;
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
 
 .hide {
   display: none;
@@ -247,7 +248,7 @@ border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
-z-index: 1;
+z-index: 6;
 }
 
 .dot-container{
@@ -257,9 +258,10 @@ z-index: 1;
   left:0;
   height: 100%;
   width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: 6;
 }
 
 .healthBarShell {

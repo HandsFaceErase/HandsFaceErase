@@ -3,7 +3,7 @@ var normalCamera, normalScene, controls, normalRenderer, geometry, material, tex
 var normalRaycaster = new THREE.Raycaster();
 var arToolkitContext;
 var arToolkitSource;
-var initfly;
+var initCovid;
 var covid = 25;
 var covidStart = 25;
 var activeCovid = 25;
@@ -25,7 +25,9 @@ cameraPosition.y = 0;
 cameraPosition.z = 0;
 
 //Initialise
+
 function init(){
+
 //Initialise AR base scene and rendering preferences
 
       // Set-up AR.js scene
@@ -176,23 +178,24 @@ function init(){
               })
 
             //Store the covid instance in a variable
-            initfly=objcovidGroup;
+            initCovid=objcovidGroup;
 
             // Addding variable covid19 to normal scene ready for content to be added
           	normalScene.add( covid19 );
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////
+
 //		Function to create initial covid19 (called in 'init')
-//////////////////////////////////////////////////////////////////////////////////
+
 function covid19Start(){
 
-//For-Loop to create and inititalise the number of covid19 in global var 'covid'
+      //For-Loop to create and inititalise the number of covid19 in global var 'covid'
+
       if (covidIntialised == false) {
         for (var i=covid;i--;){
           console.log(i);
-          var Div = initfly.clone();
+          var Div = initCovid.clone();
           // For each set random start location in scene
           Div.position.x = random(-7,7);
           Div.position.y = random(-7,7);
@@ -208,7 +211,8 @@ function covid19Start(){
 
       }; }
 
-// Function to animated the covid created above to move using Tween.js
+      // Function to animated the covid created above to move using Tween.js
+
       function Anim(elm){
 
         // Set position and target variables
@@ -249,7 +253,7 @@ function covid19Start(){
       };
 }
 
-//Function to create explosion at x,y & of interesected object
+// Function to create explosion at x,y & of interesected object
 
 //Global variables for ExplodeAnimation
 var movementSpeed = 10;
@@ -341,14 +345,16 @@ function resetGame(){
 
 }
 
-//Function to create random number between two povided points
+// Function to create random number between two povided points
+
 function random(min,max){
 
     return Math.random()*(max-min+1)+min;
 
 }
 
-//Render (repeated loop)
+// Render (repeated loop)
+
 var render = function () {
 
   requestAnimationFrame( render );

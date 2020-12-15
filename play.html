@@ -17,18 +17,19 @@
 </head>
 
 <body class="playBody">
-  <!-- Target Content -->
-  <div class="container-fluid container-play">
-    <div class="dot-container">
-     <span class="dot"></span>
-    </div>
-  </div>
 
   <!-- Menu Bar Content -->
   <div class="infoBarContainer">
     <div class="infoBar">
       <div class="flex healthBarShell"><p class="healthBarValue"></p></div>
       <div class="flex"><p id="covidLeft"></p></div>
+    </div>
+  </div>
+
+  <!-- Target Content -->
+  <div class="container-fluid container-play">
+    <div class="dot-container">
+     <span class="dot"></span>
     </div>
   </div>
 
@@ -41,7 +42,6 @@
   </div>
 
   <!-- Information modal -->
-
   <div class="modal fade" id="playInfoModal" role="dialog">
     <div class="modal-dialog">
 
@@ -67,13 +67,10 @@
                 others while playing Hands Face Erase.</li>
              <li>COVID is all around us, and it’s your job to
                  keep yourself and everyone else safe.</li>
-              <li>HANDS- Clean your hands if any COVID hits you,
+              <li>HANDS - Clean your hands if any COVID hits you,
               this will then stop your health bar from going down.</li>
-              <li>FACE- if anyone comes in front of your camera
-                  without wearing a face mask throw one on
-                  their face in order to help everyone
-                  be protected.</li>
-              <li>ERASE- use your Anti-bacterial spray to clean the
+              <li>FACE - Put your mask on. Keep people protected.</li>
+              <li>ERASE - Use your Anti-bacterial spray to clean the
                   area of COVID spores and stop them
                   from touching you and others.</li>
           </ul>
@@ -90,8 +87,10 @@
   <div id="covidAttack" class="covidAttack"></div>
 
   <!-- Mask overlay -->
-  <div id="maskOverlay" class="maskOverlay">
-    <img src="Assets/Mask.svg" alt="Mask">
+  <div class="maskContainer">
+    <div id="maskOverlay" class="maskOverlay">
+      <img src="Assets/Branding/Mask.svg" alt="Mask">
+    </div>
   </div>
 
   <!-- Game Over modal -->
@@ -104,7 +103,7 @@
           <h4 class="modal-title">Game Over</h4>
         </div>
         <div class="modal-body">
-          <img src="Assets/Boris1.png" alt="Boris">
+          <img src="Assets/Boris.png" alt="Boris">
         </div>
         <div class="modal-footer">
           <button id="playAgain" type="button" class="btn btn-danger" data-dismiss="modal">Play Again</button>
@@ -112,9 +111,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <!-- Three.js library stored with file -->
   <script src="JS/three.min.js"></script>
@@ -139,12 +135,6 @@
 
   <!-- HANDS FACE ERASE Game -->
   <script src="handsfaceerase.js"></script>
-
-  <!-- Temp Face Script -->
-  <script src="face.js"></script>
-
-  <!-- Temp Hands Script -->
-  <script src="hands.js"></script>
 
 </body>
 </html>
