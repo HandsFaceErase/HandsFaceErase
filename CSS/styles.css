@@ -33,12 +33,18 @@ canvas{
     z-index: -2;
 } */
 
-body {
+.indexBody {
   /* background-color: var(--lGrey); */
   background-image: url("../Assets/High-Street-Blurred.jpg");
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
+}
+
+.playBody {
+  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .hide {
@@ -56,9 +62,7 @@ body {
 }
 
 h1{
-  text-align: center;
-  color: #41B6E6;
-  padding: 10px;
+  color: var(--lBlue);
 }
 
 h2, h3,h4 {
@@ -159,12 +163,12 @@ img {
   z-index: 0;
   justify-content: space-between;
   border-radius: 5px;;
-  margin: 10px 0  0 0;
+  margin: 0 0 0 0;
   padding: 3px 3px 3px 3px;
 }
 
 .infoBarContainer{
-  height: 10%;
+  height:10%;
   width:100%;
   position: fixed;
   display: flex;
@@ -279,8 +283,20 @@ z-index: 1;
   position: relative;
 }
 
+.maskOverlay {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-self: flex-end;
+  width: 160%;
+  top: 70%;
+  overflow: hidden;
+  transition: all 1s;
+}
+
 .covidAttack {
   display: none;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(255,0,0,.2);
@@ -301,24 +317,6 @@ z-index: 1;
   }
 }
 
-.gameOver{
-  position: fixed;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  text-shadow: 2px 2px #d42f43;;
-  opacity: 0;
-  top:0;
-  left:0;
-  transition: opacity 2s;
-  transition-timing-function: ease-in;
-}
-
 /* #basic-modal-content {
   display:none;
 } */
@@ -326,12 +324,8 @@ z-index: 1;
 /* Overlay */
 /* #simplemodal-overlay {
   background-color:#000;
-<<<<<<< Updated upstream
   z-index: 1;
 }
-=======
-} */
->>>>>>> Stashed changes
 
 /* Container */
 /* #simplemodal-container {

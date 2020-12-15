@@ -6,7 +6,7 @@ $(document).ready( function() {
    $("#EraseLogo").delay(6000).fadeIn();
    $("#PlayNow").delay(6000).fadeIn();
 
-//Information modal and sound
+//Information modal
    $("#information").click(function(){
      $("#infoModal").modal({backdrop: true});
    });
@@ -15,14 +15,16 @@ $(document).ready( function() {
    $("#leaderboard").click(function(){
      $("#leaderModal").modal({backdrop: true});
 
-     var audioElement = document.createElement('audio');
-     audioElement.setAttribute('src', 'Assets/Boris.mp3');
+     var borisAudioElement = document.createElement('audio');
+     borisAudioElement.setAttribute('src', 'Assets/Boris.mp3');
 
      $('#boris').click(function() {
-         audioElement.play();
+         borisAudioElement.play();
          $("#status").text("Status: Playing");
      });
    });
+
+$("#playInfoModal").modal({backdrop: true});
 
 //Hands sound
    var handsAudioElement = document.createElement('audio');
@@ -49,10 +51,12 @@ $(document).ready( function() {
    $('#erase').click(function() {
        eraseAudioElement.play();
        $("#status").text("Status: Playing");
-       console.log("erasesound");
    });
 
 });
+
+
+
 
 
 //Background music
